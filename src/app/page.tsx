@@ -1106,39 +1106,81 @@ export default function HomePage() {
 
           </div>
 
-          {/* ── FOUNDER VIDEO MESSAGE CARD ── */}
+          {/* ── STUDENT SUCCESS STORY CARD ── */}
           <div className="mt-8 bg-white/85 backdrop-blur-sm rounded-3xl p-6 sm:p-10 border border-amber-200/80 shadow-xl shadow-amber-900/5">
-            <div className="max-w-3xl mx-auto text-center space-y-2.5 mb-6">
+            <div className="max-w-3xl mx-auto text-center space-y-2.5 mb-8">
               <div className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-500/30 rounded-full px-3.5 py-1">
                 <span className="text-amber-800 text-xs font-bold uppercase tracking-wider">
-                  🎥 Video Introduction
+                  🏆 Student Spotlight
                 </span>
               </div>
-              <h3 className="text-xl sm:text-3xl font-extrabold text-[#0f3d2e]">
-                Hear Directly from Our Founder
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0f3d2e]">
+                Hear Our Student Recite - A Real Success Story
               </h3>
-              <p className="text-stone-600 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
-                Watch a short message from Hafiz Abdul Rauf welcoming families and sharing our academy&apos;s approach to nurturing Quran recitation.
+              <p className="text-stone-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+                We&apos;re proud of our student, who recently won recognition at an International Quran Recitation Competition. Listen to their beautiful recitation below.
               </p>
             </div>
 
             {/* Video Player Container */}
-            <div className="max-w-2xl mx-auto">
+            <div className="max-w-2xl mx-auto mb-10">
               <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border-4 border-amber-400/60 shadow-2xl shadow-amber-950/15 bg-stone-900">
                 <video
                   controls
                   playsInline
                   preload="metadata"
-                  poster="/images/founder.jpeg"
                   className="w-full aspect-video object-cover"
                 >
-                  <source src="/videos/founder-message.mp4" type="video/mp4" />
+                  <source src="/videos/student-recitation.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
               <p className="text-center text-xs text-stone-500 mt-3 italic">
-                ▶️ Click play to watch the video message from Founder &amp; Director Hafiz Abdul Rauf
+                ▶️ Click play to listen to our student&apos;s award-winning recitation
               </p>
+            </div>
+
+            {/* Certificates Showcase */}
+            <div className="max-w-4xl mx-auto pt-8 border-t border-amber-200/60">
+              <div className="text-center mb-6">
+                <p className="text-amber-800 font-bold text-xs uppercase tracking-widest">
+                  International Competition Recognition
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                {/* Certificate 1 */}
+                <div className="flex flex-col items-center group">
+                  <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border-3 border-amber-400/80 shadow-md group-hover:shadow-xl transition-all duration-300 bg-stone-50">
+                    <Image
+                      src="/images/certificate-1.jpeg"
+                      alt="International Quran Competition Certificate"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-contain p-2"
+                    />
+                  </div>
+                  <p className="text-stone-600 text-xs font-semibold mt-3 text-center">
+                    International Quran Competition Certificate
+                  </p>
+                </div>
+
+                {/* Certificate 2 */}
+                <div className="flex flex-col items-center group">
+                  <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border-3 border-amber-400/80 shadow-md group-hover:shadow-xl transition-all duration-300 bg-stone-50">
+                    <Image
+                      src="/images/certificate-2.jpeg"
+                      alt="International Quran Competition Certificate"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-contain p-2"
+                    />
+                  </div>
+                  <p className="text-stone-600 text-xs font-semibold mt-3 text-center">
+                    International Quran Competition Certificate
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
