@@ -13,10 +13,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const BASE_URL = "https://globalquraninstitute.com";
+const BASE_URL = "https://al-rauf-quran-academy.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
+  verification: { google: "tAAEQN6QqIi6352W8TKt9_7uSni85kr_Vbv9XhWnYLs" },
   title: {
     default: "Al Rauf International Quran Academy - Online Quran Classes | Learn Quran 1-on-1",
     template: "%s | Al Rauf International Quran Academy",
