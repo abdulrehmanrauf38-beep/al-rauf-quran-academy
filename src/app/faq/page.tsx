@@ -375,7 +375,7 @@ export default function FAQPage() {
                 <span>💬 Chat on WhatsApp</span>
               </a>
               <a
-                href="mailto:info@globalquraninstitute.com"
+                href="mailto:info@al-rauf-quran-academy.vercel.app"
                 className="inline-flex items-center justify-center gap-2 bg-white hover:bg-stone-50 text-stone-800 border border-stone-300 font-semibold text-sm px-6 py-3.5 rounded-full transition-colors"
               >
                 <span>✉️ Email Us</span>
@@ -413,7 +413,6 @@ export default function FAQPage() {
               <Link href="/faq" className="text-amber-400 font-medium transition-colors">FAQ</Link>
               <Link href="/contact" className="hover:text-amber-400 transition-colors">Contact</Link>
               <Link href="/book-trial" className="hover:text-amber-400 transition-colors">Book Free Trial</Link>
-              <Link href="/register" className="hover:text-amber-400 transition-colors">Register</Link>
             </div>
           </div>
 

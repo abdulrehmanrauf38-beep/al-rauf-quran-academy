@@ -5,13 +5,13 @@ export const metadata: Metadata = {
   description:
     "Explore common Quranic verses and daily phrases with accurate English meanings and child-friendly reflections. Learn the meaning behind your recitation at Al Rauf International Quran Academy.",
   alternates: {
-    canonical: "https://globalquraninstitute.com/learn-the-meaning",
+    canonical: "https://al-rauf-quran-academy.vercel.app/learn-the-meaning",
   },
   openGraph: {
     title: "Understand What You Recite | Al Rauf International Quran Academy",
     description:
       "Learn the meanings behind common Quranic verses, daily du'as, and short Surahs. Transform recitation into genuine connection.",
-    url: "https://globalquraninstitute.com/learn-the-meaning",
+    url: "https://al-rauf-quran-academy.vercel.app/learn-the-meaning",
   },
 };
 

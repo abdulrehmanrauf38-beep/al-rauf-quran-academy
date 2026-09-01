@@ -106,7 +106,7 @@ export default function ArabicAlphabetChartPage() {
               Complete Beginner&apos;s Pronunciation &amp; Makhārij Guide • 28 Fundamental Letters of the Holy Quran
             </p>
             <p className="text-amber-400 text-xs font-semibold mt-2">
-              Al Rauf International Quran Academy • www.globalquraninstitute.com
+              Al Rauf International Quran Academy • al-rauf-quran-academy.vercel.app
             </p>
           </div>
 
@@ -218,7 +218,7 @@ export default function ArabicAlphabetChartPage() {
 
         {/* Print-only footer branding */}
         <div className="hidden print:block text-center mt-4 text-xs text-stone-500">
-          © {new Date().getFullYear()} Al Rauf International Quran Academy • Online 1-on-1 Quran Lessons • www.globalquraninstitute.com
+          © {new Date().getFullYear()} Al Rauf International Quran Academy • Online 1-on-1 Quran Lessons • al-rauf-quran-academy.vercel.app
         </div>
       </main>
     </div>

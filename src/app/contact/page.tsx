@@ -425,7 +425,6 @@ export default function ContactPage() {
               <Link href="/faq" className="hover:text-amber-400 transition-colors">FAQ</Link>
               <Link href="/contact" className="text-amber-400 font-medium transition-colors">Contact</Link>
               <Link href="/book-trial" className="hover:text-amber-400 transition-colors">Book Free Trial</Link>
-              <Link href="/register" className="hover:text-amber-400 transition-colors">Register</Link>
             </div>
           </div>
 

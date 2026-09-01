@@ -139,7 +139,6 @@ const NAV_LINKS = [
   { name: "Pricing", href: "/pricing" },
   { name: "FAQ", href: "/faq" },
   { name: "Contact", href: "/contact" },
-  { name: "Testimonials", href: "#testimonials" },
   { name: "Register", href: "/register" },
 ];
 
@@ -244,13 +243,32 @@ const FOOTER_LINKS: Record<string, string[]> = {
   Support: ["FAQ", "Pricing", "Book Free Trial", "Privacy Policy"],
 };
 
+import { translations, Language } from "@/data/translations";
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [lang, setLang] = useState<Language>("en");
+
+  const t = translations[lang];
+
+  const navLinks = [
+    { name: t.nav.courses, href: "#courses" },
+    { name: t.nav.about, href: "/about" },
+    { name: t.nav.teachers, href: "/teachers" },
+    { name: t.nav.pricing, href: "/pricing" },
+    { name: t.nav.faq, href: "/faq" },
+    { name: t.nav.contact, href: "/contact" },
+    { name: t.nav.register, href: "/register" },
+  ];
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-900 font-sans antialiased">
+    <div
+      dir={lang === "ur" ? "rtl" : "ltr"}
+      className="min-h-screen bg-stone-50 text-stone-900 antialiased transition-all duration-200"
+      style={lang === "ur" ? { fontFamily: "'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif" } : undefined}
+    >
 
       {/* ── NAVBAR ── */}
       <header className="sticky top-0 z-50 bg-[#0f3d2e]/95 backdrop-blur-md border-b border-[#1a5c43]/50 shadow-lg">
@@ -270,7 +288,7 @@ export default function HomePage() {
 
             {/* Desktop nav */}
             <div className="hidden md:flex items-center gap-1">
-              {NAV_LINKS.map((link) => (
+              {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
@@ -281,14 +299,44 @@ export default function HomePage() {
               ))}
             </div>
 
-            {/* CTA + hamburger */}
+            {/* Language Switcher + CTA + hamburger */}
             <div className="flex items-center gap-3">
+              {/* Language Switcher Button (Desktop & Mobile) */}
+              <div className="inline-flex items-center bg-black/30 border border-amber-400/50 rounded-full p-0.5 shadow-inner">
+                <button
+                  type="button"
+                  onClick={() => setLang("en")}
+                  className={`px-2.5 py-1 rounded-full text-xs font-bold transition-all duration-200 ${
+                    lang === "en"
+                      ? "bg-amber-500 text-[#0f3d2e] shadow-sm"
+                      : "text-stone-300 hover:text-white"
+                  }`}
+                  aria-label="Switch to English"
+                >
+                  EN
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLang("ur")}
+                  className={`px-2.5 py-1 rounded-full text-xs font-bold transition-all duration-200 ${
+                    lang === "ur"
+                      ? "bg-amber-500 text-[#0f3d2e] shadow-sm"
+                      : "text-stone-300 hover:text-white"
+                  }`}
+                  style={{ fontFamily: "'Noto Sans Arabic', 'Segoe UI', sans-serif" }}
+                  aria-label="اردو میں تبدیل کریں"
+                >
+                  اردو
+                </button>
+              </div>
+
               <Link
                 href="/book-trial"
                 className="hidden sm:inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-[#0f3d2e] font-semibold text-sm px-4 py-2 rounded-full transition-all duration-200 shadow-md hover:shadow-amber-400/40 hover:-translate-y-0.5"
               >
-                Book Free Trial
+                {t.nav.bookTrial}
               </Link>
+
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
                 className="md:hidden text-stone-300 hover:text-white p-1"
@@ -302,7 +350,7 @@ export default function HomePage() {
           {/* Mobile menu */}
           {menuOpen && (
             <div className="md:hidden border-t border-[#1a5c43]/50 py-3 pb-4 space-y-1">
-              {NAV_LINKS.map((link) => (
+              {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
@@ -316,7 +364,7 @@ export default function HomePage() {
                 href="/book-trial"
                 className="mt-3 block w-full text-center bg-amber-500 hover:bg-amber-400 text-[#0f3d2e] font-semibold text-sm px-4 py-2.5 rounded-full transition-colors"
               >
-                Book Free Trial
+                {t.nav.bookTrial}
               </Link>
             </div>
           )}
@@ -416,27 +464,25 @@ export default function HomePage() {
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-500/30 rounded-full px-4 py-1.5 mb-6">
               <span className="text-amber-400 text-xs font-semibold uppercase tracking-widest">
-                Online Quran Classes
+                {t.hero.trialBadge}
               </span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-6">
-              Learn Quran Online{" "}
-              <span className="text-amber-400">1-on-1</span> from
-              <br />
-              Qualified Pakistani Teachers
+              {t.hero.headline}{" "}
+              <span className="text-amber-400">{t.hero.headlineHighlight}</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-stone-300 leading-relaxed mb-4 max-w-2xl">
-              Start your Quranic journey with certified teachers in personalised, structured lessons tailored to your pace — from any corner of the world.
+              {t.hero.subheadline}
             </p>
 
             {/* Highlights */}
             <div className="flex flex-wrap gap-3 mb-8">
               {[
-                "✨ 3 Free Trial Classes",
-                "👩‍🏫 Dedicated Female Tutors Available",
-                "🎥 Classes via Google Meet",
+                `✨ ${t.hero.bullet1}`,
+                `👩‍🏫 ${t.hero.bullet2}`,
+                `🎥 ${t.hero.bullet3}`,
               ].map((item) => (
                 <span
                   key={item}
@@ -453,13 +499,13 @@ export default function HomePage() {
                 href="/book-trial"
                 className="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-[#0f3d2e] font-bold text-base px-8 py-4 rounded-full transition-all duration-200 shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50 hover:-translate-y-0.5"
               >
-                Book Your Free Trial →
+                {t.hero.bookTrialBtn}
               </Link>
               <a
                 href="#courses"
                 className="inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-amber-400/60 text-white hover:text-amber-400 font-semibold text-base px-8 py-4 rounded-full transition-all duration-200"
               >
-                Explore Courses
+                {t.hero.exploreBtn}
               </a>
             </div>
 
@@ -467,10 +513,45 @@ export default function HomePage() {
             <div className="flex items-center gap-2 mt-6 text-stone-400 text-sm">
               <IconVideo />
               <span>
-                All classes are conducted live via{" "}
-                <strong className="text-stone-300">Google Meet</strong> — no downloads needed.
+                {lang === "ur" ? (
+                  <>تمام کلاسز بغیر کسی ڈاؤنلوڈ کے لائیو <strong className="text-stone-300">گوگل میٹ</strong> پر ہوتی ہیں۔</>
+                ) : (
+                  <>All classes are conducted live via <strong className="text-stone-300">Google Meet</strong> — no downloads needed.</>
+                )}
               </span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── TRUSTED-BY COUNTRY BAR ── */}
+      <section aria-label="Trusted by Muslim families worldwide" className="bg-[#0f3d2e] border-b border-[#1a5c43]/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2.5">
+            {/* Heading */}
+            <span className="text-stone-400 text-xs font-semibold uppercase tracking-widest whitespace-nowrap flex-shrink-0">
+              {lang === "ur" ? "دنیا بھر کے مسلم خاندانوں کا اعتماد" : "Trusted by Muslim families in"}
+            </span>
+
+            {/* Divider (hidden on mobile when items wrap) */}
+            <span className="hidden sm:block w-px h-4 bg-[#1a5c43]/80 flex-shrink-0" aria-hidden="true" />
+
+            {/* Country pills */}
+            {[
+              { flag: "🇺🇸", name: lang === "ur" ? "امریکہ" : "United States" },
+              { flag: "🇬🇧", name: lang === "ur" ? "برطانیہ" : "United Kingdom" },
+              { flag: "🇨🇦", name: lang === "ur" ? "کینیڈا" : "Canada" },
+              { flag: "🇦🇺", name: lang === "ur" ? "آسٹریلیا" : "Australia" },
+              { flag: "🇵🇰", name: lang === "ur" ? "پاکستان" : "Pakistan" },
+            ].map(({ flag, name }) => (
+              <span
+                key={name}
+                className="inline-flex items-center gap-1.5 bg-white/5 hover:bg-amber-500/10 border border-white/10 hover:border-amber-500/30 text-stone-300 hover:text-amber-300 text-xs font-medium px-3 py-1 rounded-full transition-colors duration-200 whitespace-nowrap select-none"
+              >
+                <span role="img" aria-label={name} className="text-sm leading-none">{flag}</span>
+                {name}
+              </span>
+            ))}
           </div>
         </div>
       </section>
@@ -480,10 +561,10 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
             {[
-              { icon: <IconCertificate />, label: "Certified Teachers", sub: "Ijazah-certified tutors" },
-              { icon: <IconUsers />, label: "Female Tutors Available", sub: "Safe & comfortable learning" },
-              { icon: <IconGlobe />, label: "All Time Zones", sub: "UK, US, Canada & beyond" },
-              { icon: <IconGift />, label: "3 Free Trial Classes", sub: "No commitment required" },
+              { icon: <IconCertificate />, label: t.stats.stat3Label, sub: t.stats.stat3Value },
+              { icon: <IconUsers />, label: t.hero.bullet1, sub: t.stats.stat2Label },
+              { icon: <IconGlobe />, label: t.stats.stat4Label, sub: t.stats.stat4Value },
+              { icon: <IconGift />, label: t.stats.stat1Label, sub: t.stats.stat1Value },
             ].map(({ icon, label, sub }) => (
               <div
                 key={label}
@@ -505,61 +586,69 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-14">
-            <p className="text-[#145c42] font-semibold text-sm uppercase tracking-widest mb-3">What We Offer</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 mb-4">Our Courses</h2>
+            <p className="text-[#145c42] font-semibold text-sm uppercase tracking-widest mb-3">{t.courses.tag}</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 mb-4">{t.courses.title}</h2>
             <p className="text-stone-600 max-w-xl mx-auto text-base md:text-lg">
-              From complete beginners to advanced Tajweed students — we have a structured programme for every learner.
+              {t.courses.subtitle}
             </p>
           </div>
 
           {/* Cards grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {COURSES.map((course) => (
-              <div
-                key={course.title}
-                className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-200 hover:border-[#145c42]/40 hover:shadow-md transition-all duration-300 flex flex-col"
-              >
-                {/* Course Photo */}
-                <div className="relative w-full aspect-video overflow-hidden">
-                  <Image
-                    src={course.photo}
-                    alt={course.photoAlt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  {/* Badge overlaid on photo top-right */}
-                  <span className="absolute top-3 right-3 text-xs font-semibold text-[#145c42] bg-white/90 backdrop-blur-sm border border-emerald-200 px-2.5 py-1 rounded-full shadow-sm">
-                    {course.badge}
-                  </span>
-                </div>
+            {COURSES.map((course, idx) => {
+              const item = t.courses.items[idx] || {
+                title: course.title,
+                description: course.description,
+                badge: course.badge,
+              };
 
-                {/* Card content below image */}
-                <div className="p-5 flex flex-col flex-1">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-xl group-hover:bg-emerald-100 transition-colors flex-shrink-0">
-                      {course.emoji}
-                    </div>
-                    <h3 className="text-base font-bold text-stone-900 leading-snug">{course.title}</h3>
-                  </div>
-                  <p className="text-stone-600 text-sm leading-relaxed flex-1">{course.description}</p>
-
-                  {/* Certificate Badge & Link */}
-                  <div className="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between">
-                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-800 bg-amber-50 border border-amber-200/60 px-2 py-0.5 rounded-md">
-                      🏆 Official Certificate
+              return (
+                <div
+                  key={course.title}
+                  className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-200 hover:border-[#145c42]/40 hover:shadow-md transition-all duration-300 flex flex-col"
+                >
+                  {/* Course Photo */}
+                  <div className="relative w-full aspect-video overflow-hidden">
+                    <Image
+                      src={course.photo}
+                      alt={course.photoAlt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    {/* Badge overlaid on photo */}
+                    <span className="absolute top-3 end-3 text-xs font-semibold text-[#145c42] bg-white/90 backdrop-blur-sm border border-emerald-200 px-2.5 py-1 rounded-full shadow-sm">
+                      {item.badge}
                     </span>
-                    <a
-                      href="#contact"
-                      className="inline-flex items-center text-[#145c42] hover:text-amber-600 font-semibold text-xs transition-colors group/link"
-                    >
-                      Learn More
-                      <span className="ml-1 group-hover/link:translate-x-1 transition-transform inline-block">→</span>
-                    </a>
+                  </div>
+
+                  {/* Card content below image */}
+                  <div className="p-5 flex flex-col flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-xl group-hover:bg-emerald-100 transition-colors flex-shrink-0">
+                        {course.emoji}
+                      </div>
+                      <h3 className="text-base font-bold text-stone-900 leading-snug">{item.title}</h3>
+                    </div>
+                    <p className="text-stone-600 text-sm leading-relaxed flex-1">{item.description}</p>
+
+                    {/* Certificate Badge & Link */}
+                    <div className="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between">
+                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-800 bg-amber-50 border border-amber-200/60 px-2 py-0.5 rounded-md">
+                        🏆 {lang === "ur" ? "آفیشل سرٹیفکیٹ" : "Official Certificate"}
+                      </span>
+                      <a
+                        href="#contact"
+                        className="inline-flex items-center text-[#145c42] hover:text-amber-600 font-semibold text-xs transition-colors group/link"
+                      >
+                        {t.courses.viewDetails}
+                        <span className="ms-1 group-hover/link:translate-x-1 transition-transform inline-block">→</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
 
             {/* CTA card */}
             <div className="bg-gradient-to-br from-[#0f3d2e] to-[#145c42] rounded-2xl p-6 flex flex-col items-start justify-between text-white shadow-md">
@@ -567,12 +656,16 @@ export default function HomePage() {
                 <div className="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center text-2xl mb-4">
                   🌟
                 </div>
-                <h3 className="text-lg font-bold mb-2">Not Sure Where to Start?</h3>
+                <h3 className="text-lg font-bold mb-2">
+                  {lang === "ur" ? "کہاں سے شروع کریں، سمجھ نہیں آ رہا؟" : "Not Sure Where to Start?"}
+                </h3>
                 <p className="text-stone-300 text-sm leading-relaxed mb-3">
-                  Book a free trial class and let our teacher assess your level and recommend the best course for you.
+                  {lang === "ur"
+                    ? "مفت ٹرائل کلاس لیں تاکہ استاد بچے کی موجودہ سطح کا جائزہ لے کر مناسب کورس تجویز کر سکیں۔"
+                    : "Book a free trial class and let our teacher assess your level and recommend the best course for you."}
                 </p>
                 <p className="text-amber-400 text-xs font-semibold">
-                  🏷️ Rates from only $3/class • Islamic Studies FREE!
+                  {lang === "ur" ? "🏷️ فیس صرف $3 فی کلاس سے شروع • اسلامیات مفت!" : "🏷️ Rates from only $3/class • Islamic Studies FREE!"}
                 </p>
               </div>
               <div className="mt-6 flex flex-col sm:flex-row gap-2.5 w-full">
@@ -580,13 +673,13 @@ export default function HomePage() {
                   href="/book-trial"
                   className="flex-1 inline-flex items-center justify-center bg-amber-500 hover:bg-amber-400 text-[#0f3d2e] font-bold text-xs sm:text-sm px-4 py-2.5 rounded-full transition-colors text-center"
                 >
-                  Book Free Trial →
+                  {t.courses.bookTrial}
                 </Link>
                 <Link
                   href="/pricing"
                   className="inline-flex items-center justify-center border border-white/30 hover:border-amber-400 text-white hover:text-amber-400 font-semibold text-xs sm:text-sm px-3.5 py-2.5 rounded-full transition-colors text-center"
                 >
-                  Pricing
+                  {t.nav.pricing}
                 </Link>
               </div>
             </div>
@@ -595,19 +688,19 @@ export default function HomePage() {
           {/* View Pricing Banner below Courses Grid */}
           <div className="mt-12 text-center">
             <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-white border border-stone-200/80 shadow-sm rounded-2xl px-6 py-4">
-              <div className="text-left">
+              <div className="text-start">
                 <p className="font-bold text-stone-900 text-sm sm:text-base">
-                  Looking for detailed course fees &amp; weekly plans?
+                  {t.pricingPreview.title}
                 </p>
                 <p className="text-stone-500 text-xs sm:text-sm">
-                  Starting at $3/class with 4x and 5x weekly options.
+                  {t.pricingPreview.startingFrom}
                 </p>
               </div>
               <Link
                 href="/pricing"
                 className="inline-flex items-center gap-2 bg-[#145c42] hover:bg-[#0f3d2e] text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-full transition-all shadow hover:shadow-md"
               >
-                View Full Pricing &amp; Plans →
+                {t.pricingPreview.viewPricingBtn}
               </Link>
             </div>
           </div>
@@ -624,35 +717,35 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-14 items-center">
             
             {/* Left Column: Descriptive Content & Value Points */}
-            <div className="lg:col-span-5 text-center lg:text-left space-y-5">
+            <div className="lg:col-span-5 text-center lg:text-start space-y-5">
               <div className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-500/30 rounded-full px-3.5 py-1">
                 <span className="text-amber-800 text-xs font-bold uppercase tracking-wider">
-                  🏆 Recognized Milestones
+                  {t.certificate.tag}
                 </span>
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0f3d2e] leading-tight">
-                Earn a Certificate of Completion
+                {t.certificate.title}
               </h2>
 
               <p className="text-stone-700 text-base sm:text-lg leading-relaxed font-normal">
-                Celebrate every milestone. When your child completes a course level, they receive an official Al Rauf International Quran Academy certificate to recognize their achievement and dedication.
+                {t.certificate.desc}
               </p>
 
               {/* Benefit highlights */}
-              <div className="space-y-3.5 pt-2 text-left">
+              <div className="space-y-3.5 pt-2 text-start">
                 {[
                   {
-                    title: "Formal Level Completion",
-                    desc: "Certificates awarded for graduating Noorani Qaida, Quran Reading, Tajweed, or Hifz modules.",
+                    title: t.certificate.feature1,
+                    desc: lang === "ur" ? "نورانی قاعدہ، ناظرہ، تجوید یا حفظ کی تکمیل پر باضابطہ سند۔" : "Awarded for completing Noorani Qaida, Quran Reading, Tajweed, or Hifz modules.",
                   },
                   {
-                    title: "Motivates Lifelong Quran Study",
-                    desc: "Tangible recognition gives young learners immense pride and encouragement to keep excelling.",
+                    title: t.certificate.feature2,
+                    desc: lang === "ur" ? "ہر سند پر اکیڈمی کا تصدیقی ریکارڈ اور گولڈن مہر درج ہوتی ہے۔" : "Official signed certificate with verified registration ID.",
                   },
                   {
-                    title: "Verified by Qualified Scholars",
-                    desc: "Each certificate is signed by our Director and includes a unique verification record.",
+                    title: t.certificate.feature3,
+                    desc: lang === "ur" ? "بچے کی حوصلہ افزائی کے لیے پرنٹ کے قابل ہائی کوالٹی سند۔" : "High-resolution printable document to frame and celebrate.",
                   },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start gap-3 bg-white/80 backdrop-blur-sm rounded-2xl p-3.5 border border-amber-200/80 shadow-sm">
@@ -672,13 +765,13 @@ export default function HomePage() {
                   href="/book-trial"
                   className="inline-flex items-center justify-center bg-[#0f3d2e] hover:bg-[#145c42] text-white font-bold text-sm px-6 py-3.5 rounded-full transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
                 >
-                  Book 3 Free Trial Classes →
+                  {t.hero.bookTrialBtn}
                 </Link>
                 <a
                   href="#courses"
                   className="inline-flex items-center justify-center bg-white hover:bg-stone-50 text-stone-800 border border-stone-300 font-semibold text-sm px-6 py-3.5 rounded-full transition-colors"
                 >
-                  Explore Course Modules
+                  {t.hero.exploreBtn}
                 </a>
               </div>
             </div>
@@ -689,7 +782,7 @@ export default function HomePage() {
                 
                 {/* Floating "Official Badge" */}
                 <div className="absolute -top-4 -right-2 sm:-right-4 z-20 bg-amber-500 text-[#0f3d2e] text-xs sm:text-sm font-extrabold px-4 py-1.5 rounded-full shadow-lg border-2 border-white flex items-center gap-1.5">
-                  <span>🏆 Official Certificate Included</span>
+                  <span>🏆 {lang === "ur" ? "آفیشل سند شامل ہے" : "Official Certificate Included"}</span>
                 </div>
 
                 {/* Certificate Showcase Card */}
@@ -833,23 +926,23 @@ export default function HomePage() {
 
             {/* Left: text */}
             <div>
-              <p className="text-[#145c42] font-semibold text-sm uppercase tracking-widest mb-3">Why Choose Us</p>
+              <p className="text-[#145c42] font-semibold text-sm uppercase tracking-widest mb-3">{t.whyChooseUs.tag}</p>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 mb-6 leading-tight">
-                A learning experience built around <span className="text-[#145c42]">you</span>
+                {t.whyChooseUs.title}
               </h2>
               <p className="text-stone-600 mb-8 leading-relaxed">
-                We combine traditional Islamic scholarship with modern online convenience, ensuring every student feels supported, motivated, and spiritually enriched throughout their journey.
+                {t.whyChooseUs.subtitle}
               </p>
 
               <ul className="space-y-5">
-                {BENEFITS.map((b) => (
+                {t.whyChooseUs.benefits.map((b) => (
                   <li key={b.title} className="flex gap-4">
                     <div className="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 text-[#145c42] flex items-center justify-center">
                       <IconCheck />
                     </div>
                     <div>
                       <p className="font-semibold text-stone-900">{b.title}</p>
-                      <p className="text-stone-500 text-sm mt-0.5 leading-relaxed">{b.detail}</p>
+                      <p className="text-stone-500 text-sm mt-0.5 leading-relaxed">{b.desc}</p>
                     </div>
                   </li>
                 ))}
@@ -866,15 +959,15 @@ export default function HomePage() {
                       بِسْمِ اللَّهِ
                     </p>
                   </div>
-                  <p className="text-stone-300 text-sm italic">In the name of Allah</p>
+                  <p className="text-stone-300 text-sm italic">{lang === "ur" ? "اللہ کے بابرکت نام سے" : "In the name of Allah"}</p>
                 </div>
 
                 <div className="space-y-4">
                   {[
-                    { label: "Countries Served", value: "30+" },
-                    { label: "Students Enrolled", value: "500+" },
-                    { label: "Classes per Week", value: "1,200+" },
-                    { label: "Satisfaction Rate", value: "98%" },
+                    { label: lang === "ur" ? "ممالک" : "Countries Served", value: "30+" },
+                    { label: lang === "ur" ? "زیرِ تعلیم طلبہ" : "Students Enrolled", value: "500+" },
+                    { label: lang === "ur" ? "ہفتہ وار کلاسز" : "Classes per Week", value: "1,200+" },
+                    { label: lang === "ur" ? "اطمینان کی شرح" : "Satisfaction Rate", value: "98%" },
                   ].map(({ label, value }) => (
                     <div
                       key={label}
@@ -903,15 +996,15 @@ export default function HomePage() {
             {/* Left: Text & Features */}
             <div className="lg:col-span-6 space-y-6">
               <div className="inline-flex items-center gap-2 bg-emerald-100 text-[#145c42] rounded-full px-3.5 py-1 text-xs font-bold uppercase tracking-wider">
-                📊 Structured Parent Feedback
+                {t.progressReport.tag}
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 leading-tight">
-                Real Progress You Can See
+                {t.progressReport.title}
               </h2>
 
               <p className="text-stone-600 text-base sm:text-lg leading-relaxed">
-                After every class, parents receive a structured progress report — what your child learned, their strengths, and what to practice next. No wondering, no guessing — just clear, honest updates on your child&apos;s Quran journey.
+                {t.progressReport.desc}
               </p>
 
               {/* 4 Feature Points */}
@@ -919,23 +1012,23 @@ export default function HomePage() {
                 {[
                   {
                     icon: "📖",
-                    title: "What We Covered",
-                    desc: "Exact Ayahs, letters, or Qaida rules practiced during the session.",
+                    title: lang === "ur" ? "پڑھا گیا سبق" : "What We Covered",
+                    desc: lang === "ur" ? "کلاس میں پڑھی گئی آیات، حروف اور تجوید کے قواعد۔" : "Exact Ayahs, letters, or Qaida rules practiced during the session.",
                   },
                   {
                     icon: "🌟",
-                    title: "Strengths & Milestones",
-                    desc: "Positive encouragement on where your child excelled.",
+                    title: lang === "ur" ? "بچے کی خوبیاں" : "Strengths & Milestones",
+                    desc: lang === "ur" ? "بچے کی محنت اور اچھے تلفظ پر مثبت حوصلہ افزائی۔" : "Positive encouragement on where your child excelled.",
                   },
                   {
                     icon: "🎯",
-                    title: "Areas to Practice",
-                    desc: "Constructive focus areas on Tajweed & pronunciation.",
+                    title: lang === "ur" ? "مشق کے نکات" : "Areas to Practice",
+                    desc: lang === "ur" ? "تجوید اور درست ادائیگی کے لیے ضروری توجہ۔" : "Constructive focus areas on Tajweed & pronunciation.",
                   },
                   {
                     icon: "📝",
-                    title: "Homework & Next Steps",
-                    desc: "Clear guidance on what to revise between classes.",
+                    title: lang === "ur" ? "ہوم ورک و اگلا سبق" : "Homework & Next Steps",
+                    desc: lang === "ur" ? "اگلی کلاس تک گھر پر دہرائی کی واضح ہدایات۔" : "Clear guidance on what to revise between classes.",
                   },
                 ].map((item) => (
                   <div
@@ -954,7 +1047,7 @@ export default function HomePage() {
                   href="/book-trial"
                   className="inline-flex items-center gap-2 bg-[#0f3d2e] hover:bg-[#145c42] text-white font-bold text-sm px-6 py-3.5 rounded-full transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
                 >
-                  Experience It in Your 3 Free Trials →
+                  {t.hero.bookTrialBtn}
                 </Link>
               </div>
             </div>
@@ -964,8 +1057,8 @@ export default function HomePage() {
               <div className="w-full max-w-md bg-white rounded-3xl p-6 sm:p-7 border-2 border-amber-300/80 shadow-xl relative">
                 
                 {/* Floating Tag */}
-                <div className="absolute -top-3.5 right-6 bg-amber-500 text-[#0f3d2e] text-[11px] font-extrabold px-3 py-1 rounded-full shadow-sm">
-                  ✨ Sent After Every Class
+                <div className="absolute -top-3.5 end-6 bg-amber-500 text-[#0f3d2e] text-[11px] font-extrabold px-3 py-1 rounded-full shadow-sm">
+                  ✨ {lang === "ur" ? "ہر کلاس کے بعد ارسال" : "Sent After Every Class"}
                 </div>
 
                 {/* Card Header */}
@@ -975,55 +1068,71 @@ export default function HomePage() {
                   </div>
                   <p className="font-bold text-sm">Al Rauf International Quran Academy</p>
                   <p className="text-amber-400 text-[10px] uppercase font-bold tracking-wider">
-                    Student Class Progress Report
+                    {lang === "ur" ? "طالب علم کی تعلیمی رپورٹ" : "Student Class Progress Report"}
                   </p>
                 </div>
 
                 {/* Meta details */}
                 <div className="bg-stone-50 rounded-xl p-3 border border-stone-200 mb-3 text-xs grid grid-cols-2 gap-2">
                   <div>
-                    <span className="text-stone-400 text-[10px] block">Student</span>
-                    <span className="font-bold text-stone-900">Zayd Ali</span>
+                    <span className="text-stone-400 text-[10px] block">{lang === "ur" ? "طالب علم" : "Student"}</span>
+                    <span className="font-bold text-stone-900">{lang === "ur" ? "زید علی" : "Zayd Ali"}</span>
                   </div>
                   <div>
-                    <span className="text-stone-400 text-[10px] block">Course</span>
-                    <span className="font-semibold text-emerald-800">Noorani Qaida</span>
+                    <span className="text-stone-400 text-[10px] block">{lang === "ur" ? "کورس" : "Course"}</span>
+                    <span className="font-semibold text-emerald-800">{lang === "ur" ? "نورانی قاعدہ" : "Noorani Qaida"}</span>
                   </div>
                 </div>
 
                 {/* Report snippets */}
                 <div className="space-y-2.5 text-xs">
-                  <div className="bg-stone-50/80 p-3 rounded-xl border-l-4 border-[#145c42]">
-                    <p className="font-bold text-[#0f3d2e] text-[11px]">📖 Covered This Class:</p>
+                  <div className="bg-stone-50/80 p-3 rounded-xl border-s-4 border-[#145c42]">
+                    <p className="font-bold text-[#0f3d2e] text-[11px]">
+                      📖 {lang === "ur" ? "آج کا پڑھا گیا سبق:" : "Covered This Class:"}
+                    </p>
                     <p className="text-stone-600 mt-0.5 leading-relaxed text-[11px]">
-                      Lesson 6 (Tanween rules). Practiced connecting throat letters accurately.
+                      {lang === "ur"
+                        ? "سبق نمبر ۶ (تنوین کے قواعد)۔ حروفی حلقی کی درست ادائیگی کے ساتھ مشق کروائی گئی۔"
+                        : "Lesson 6 (Tanween rules). Practiced connecting throat letters accurately."}
                     </p>
                   </div>
 
-                  <div className="bg-emerald-50/70 p-3 rounded-xl border-l-4 border-emerald-500">
-                    <p className="font-bold text-emerald-900 text-[11px]">🌟 Strengths:</p>
+                  <div className="bg-emerald-50/70 p-3 rounded-xl border-s-4 border-emerald-500">
+                    <p className="font-bold text-emerald-900 text-[11px]">
+                      🌟 {lang === "ur" ? "خوبیاں:" : "Strengths:"}
+                    </p>
                     <p className="text-emerald-800 mt-0.5 leading-relaxed text-[11px]">
-                      Great articulation of &lsquo;Ayn and Ha. Enthusiastic recitation!
+                      {lang === "ur"
+                        ? "ع اور ح کے مخرج کی ادائیگی بہت عمدہ رہی۔ ماشاءاللہ!"
+                        : "Great articulation of 'Ayn and Ha. Enthusiastic recitation!"}
                     </p>
                   </div>
 
-                  <div className="bg-amber-50/70 p-3 rounded-xl border-l-4 border-amber-500">
-                    <p className="font-bold text-amber-900 text-[11px]">🎯 Practice Focus:</p>
+                  <div className="bg-amber-50/70 p-3 rounded-xl border-s-4 border-amber-500">
+                    <p className="font-bold text-amber-900 text-[11px]">
+                      🎯 {lang === "ur" ? "مزید مشق:" : "Practice Focus:"}
+                    </p>
                     <p className="text-amber-800 mt-0.5 leading-relaxed text-[11px]">
-                      Light vs heavy letters (Qaf vs Kaf). Brief pause on double vowels.
+                      {lang === "ur"
+                        ? "ق اور ک میں باریک اور موٹے حرف کا فرق واضح کرنا ہے۔"
+                        : "Light vs heavy letters (Qaf vs Kaf). Brief pause on double vowels."}
                     </p>
                   </div>
 
-                  <div className="bg-slate-50 p-3 rounded-xl border-l-4 border-slate-400">
-                    <p className="font-bold text-slate-800 text-[11px]">📝 Homework:</p>
+                  <div className="bg-slate-50 p-3 rounded-xl border-s-4 border-slate-400">
+                    <p className="font-bold text-slate-800 text-[11px]">
+                      📝 {lang === "ur" ? "ہوم ورک:" : "Homework:"}
+                    </p>
                     <p className="text-slate-600 mt-0.5 leading-relaxed text-[11px]">
-                      Revise Lesson 6, Lines 3-8 before next Thursday&apos;s session.
+                      {lang === "ur"
+                        ? "اگلی کلاس سے قبل سبق نمبر ۶ کی لائن ۳ سے ۸ تک دہرائی کریں۔"
+                        : "Revise Lesson 6, Lines 3-8 before next session."}
                     </p>
                   </div>
                 </div>
 
                 <p className="text-center text-[10px] text-stone-400 mt-4 pt-3 border-t border-stone-100">
-                  📬 Delivered straight to parent email &amp; WhatsApp
+                  📬 {lang === "ur" ? "براہِ راست والدین کی ای میل اور واٹس ایپ پر ارسال" : "Delivered straight to parent email & WhatsApp"}
                 </p>
 
               </div>
@@ -1055,10 +1164,10 @@ export default function HomePage() {
               </div>
               <div className="mt-4">
                 <h3 className="text-lg sm:text-xl font-bold text-stone-900">
-                  Hafiz Abdul Rauf
+                  {t.founder.name}
                 </h3>
                 <p className="text-amber-700 font-semibold text-xs sm:text-sm mt-0.5">
-                  Founder &amp; Director
+                  {t.founder.role}
                 </p>
                 <p className="text-stone-500 text-xs mt-0.5">
                   Al Rauf International Quran Academy
@@ -1067,39 +1176,33 @@ export default function HomePage() {
             </div>
 
             {/* Founder Message Content */}
-            <div className="flex-1 space-y-4 text-left">
+            <div className="flex-1 space-y-4 text-start">
               <div className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-500/30 rounded-full px-3.5 py-1">
                 <span className="text-amber-800 text-xs font-bold uppercase tracking-wider">
-                  A Note From Our Founder
+                  {t.founder.tag}
                 </span>
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0f3d2e] leading-tight">
-                &ldquo;Every child deserves to learn the Quran with love, patience, and confidence.&rdquo;
+                {t.founder.quote}
               </h2>
 
               <div className="text-stone-700 text-sm sm:text-base leading-relaxed space-y-3 font-normal">
-                <p>
-                  Assalamu Alaikum wa Rahmatullah. As someone who dedicated years to memorising the Holy Quran and studying traditional Islamic sciences in Pakistan, I experienced firsthand how transformative a patient, encouraging teacher can be.
-                </p>
-                <p>
-                  I founded Al Rauf International Quran Academy to bridge the distance between qualified, traditional scholars and Muslim families living abroad in the UK, USA, Canada, Australia, and beyond. Every child deserves to learn the Book of Allah in an uplifting environment.
-                </p>
-                <p>
-                  As a parent, I understand the trust you place in us. That is why I personally interview and vet every single teacher on our platform for their recitation standards, character, and gentle teaching manner.
-                </p>
+                <p>{t.founder.p1}</p>
+                <p>{t.founder.p2}</p>
+                <p>{t.founder.p3}</p>
               </div>
 
               <div className="pt-3 border-t border-amber-200/60 flex flex-wrap items-center justify-between gap-3">
                 <p className="text-sm font-semibold text-[#0f3d2e]">
                   <span className="font-bold font-serif text-base" dir="rtl">بارك الله فيكم</span>
-                  <span className="text-stone-600 font-normal ml-2">(Barakallahu feekum — May Allah bless you)</span>
+                  <span className="text-stone-600 font-normal ms-2">({t.founder.dua})</span>
                 </p>
                 <Link
                   href="/about"
                   className="inline-flex items-center text-xs sm:text-sm font-bold text-[#145c42] hover:text-amber-700 transition-colors group"
                 >
-                  Read Our Full Story <span className="ml-1 group-hover:translate-x-1 transition-transform">→</span>
+                  {t.founder.readStory} <span className="ms-1 group-hover:translate-x-1 transition-transform">→</span>
                 </Link>
               </div>
             </div>
@@ -1111,14 +1214,14 @@ export default function HomePage() {
             <div className="max-w-3xl mx-auto text-center space-y-2.5 mb-8">
               <div className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-500/30 rounded-full px-3.5 py-1">
                 <span className="text-amber-800 text-xs font-bold uppercase tracking-wider">
-                  🏆 Student Spotlight
+                  {t.studentStory.tag}
                 </span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0f3d2e]">
-                Hear Our Student Recite - A Real Success Story
+                {t.studentStory.title}
               </h3>
               <p className="text-stone-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-                We&apos;re proud of our student, who recently won recognition at an International Quran Recitation Competition. Listen to their beautiful recitation below.
+                {t.studentStory.desc}
               </p>
             </div>
 
@@ -1136,7 +1239,7 @@ export default function HomePage() {
                 </video>
               </div>
               <p className="text-center text-xs text-stone-500 mt-3 italic">
-                ▶️ Click play to listen to our student&apos;s award-winning recitation
+                {t.studentStory.videoHint}
               </p>
             </div>
 
@@ -1144,7 +1247,7 @@ export default function HomePage() {
             <div className="max-w-4xl mx-auto pt-8 border-t border-amber-200/60">
               <div className="text-center mb-6">
                 <p className="text-amber-800 font-bold text-xs uppercase tracking-widest">
-                  International Competition Recognition
+                  {t.studentStory.certTag}
                 </p>
               </div>
 
@@ -1161,7 +1264,7 @@ export default function HomePage() {
                     />
                   </div>
                   <p className="text-stone-600 text-xs font-semibold mt-3 text-center">
-                    International Quran Competition Certificate
+                    {t.studentStory.certCaption}
                   </p>
                 </div>
 
@@ -1177,7 +1280,7 @@ export default function HomePage() {
                     />
                   </div>
                   <p className="text-stone-600 text-xs font-semibold mt-3 text-center">
-                    International Quran Competition Certificate
+                    {t.studentStory.certCaption}
                   </p>
                 </div>
               </div>
@@ -1191,39 +1294,39 @@ export default function HomePage() {
       <section id="testimonials" className="py-20 md:py-28 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <p className="text-[#145c42] font-semibold text-sm uppercase tracking-widest mb-3">Student Stories</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 mb-4">What Our Students Say</h2>
+            <p className="text-[#145c42] font-semibold text-sm uppercase tracking-widest mb-3">{t.testimonials.tag}</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 mb-4">{t.testimonials.title}</h2>
             <p className="text-stone-600 max-w-xl mx-auto">
-              Families across the UK, US, Canada, and beyond trust Al Rauf International Quran Academy for their Quran education.
+              {t.testimonials.subtitle}
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((t) => (
+            {t.testimonials.items.map((item, idx) => (
               <div
-                key={t.name}
+                key={item.name}
                 className="bg-white rounded-2xl p-6 shadow-sm border border-stone-200 hover:shadow-md hover:border-[#145c42]/30 transition-all duration-300 flex flex-col"
               >
                 {/* Stars */}
                 <div className="flex gap-0.5 mb-4">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <IconStar key={i} filled={i < t.stars} />
+                    <IconStar key={i} filled={true} />
                   ))}
                 </div>
 
                 {/* Quote */}
                 <p className="text-stone-600 text-sm leading-relaxed flex-1 mb-6 italic">
-                  &ldquo;{t.text}&rdquo;
+                  &ldquo;{item.quote}&rdquo;
                 </p>
 
                 {/* Author */}
                 <div className="flex items-center gap-3 pt-4 border-t border-stone-100">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#145c42] to-[#0f3d2e] flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                    {t.initials}
+                    {idx === 0 ? "FK" : idx === 1 ? "TM" : "ZA"}
                   </div>
                   <div>
-                    <p className="font-semibold text-stone-900 text-sm">{t.name}</p>
-                    <p className="text-stone-500 text-xs">{t.location}</p>
+                    <p className="font-semibold text-stone-900 text-sm">{item.name}</p>
+                    <p className="text-stone-500 text-xs">{item.location} • {item.course}</p>
                   </div>
                 </div>
               </div>
@@ -1232,12 +1335,14 @@ export default function HomePage() {
 
           {/* CTA below testimonials */}
           <div className="text-center mt-12">
-            <p className="text-stone-600 mb-4">Join hundreds of satisfied students around the world.</p>
+            <p className="text-stone-600 mb-4">
+              {lang === "ur" ? "دنیا بھر کے سینکڑوں مطمئن طلبہ اور والدین کا حصہ بنیں۔" : "Join hundreds of satisfied students around the world."}
+            </p>
             <Link
               href="/book-trial"
               className="inline-flex items-center justify-center bg-[#145c42] hover:bg-[#0f3d2e] text-white font-bold px-8 py-4 rounded-full transition-all duration-200 shadow-lg shadow-[#145c42]/30 hover:-translate-y-0.5"
             >
-              Start Your Free Trial Today →
+              {t.hero.bookTrialBtn}
             </Link>
           </div>
         </div>
@@ -1250,14 +1355,14 @@ export default function HomePage() {
           <div className="text-center max-w-3xl mx-auto mb-14">
             <div className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-500/30 rounded-full px-3.5 py-1 mb-4">
               <span className="text-amber-800 text-xs font-bold uppercase tracking-wider">
-                💡 Comprehension &amp; Reflection
+                {t.learnMeaning.tag}
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 mb-4 leading-tight">
-              We Teach Meaning, Not Just Memorization
+              {t.learnMeaning.title}
             </h2>
             <p className="text-stone-600 text-base sm:text-lg leading-relaxed font-normal">
-              Recitation without understanding leaves hearts untouched. In every course — from Noorani Qaida to Tajweed and Hifz — our teachers explain the sacred meanings and life lessons behind what students recite.
+              {t.learnMeaning.desc}
             </p>
           </div>
 
@@ -1265,25 +1370,25 @@ export default function HomePage() {
           <div className="grid sm:grid-cols-3 gap-6 mb-12">
             {[
               {
-                title: "Bismillah",
+                title: lang === "ur" ? "تسمیہ (بسم اللہ)" : "Bismillah",
                 arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
                 transliteration: "Bismillāhir-Raḥmānir-Raḥīm",
-                meaning: "In the name of Allah, the Entirely Merciful, the Especially Merciful.",
-                insight: "Saying this before any action invites Allah's divine blessing and protection.",
+                meaning: lang === "ur" ? "شروع اللہ کے نام سے جو بڑا مہربان نہایت رحم فرمانے والا ہے۔" : "In the name of Allah, the Entirely Merciful, the Especially Merciful.",
+                insight: lang === "ur" ? "ہر کام سے پہلے اسے پڑھنے سے اللہ تعالیٰ کی رحمت اور حفاظت حاصل ہوتی ہے۔" : "Saying this before any action invites Allah's divine blessing and protection.",
               },
               {
-                title: "Alhamdulillah",
+                title: lang === "ur" ? "تحمید (الحمد للہ)" : "Alhamdulillah",
                 arabic: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
                 transliteration: "Al-ḥamdu lillāhi Rabbil-ʿālamīn",
-                meaning: "All praise and gratitude belong to Allah alone, the Lord of all the worlds.",
-                insight: "Instills heartfelt gratitude in children for every blessing in their daily lives.",
+                meaning: lang === "ur" ? "تمام تعریفیں اور شکر اللہ ہی کے لیے ہیں جو تمام جہانوں کا پالنے والا ہے۔" : "All praise and gratitude belong to Allah alone, the Lord of all the worlds.",
+                insight: lang === "ur" ? "یہ کلمہ انسان کے دل میں رب کی نعمتوں پر حقیقی شکر گزاری پیدا کرتا ہے۔" : "Instills heartfelt gratitude in children for every blessing in their daily lives.",
               },
               {
-                title: "Ayat-ul-Kursi (Opening)",
+                title: lang === "ur" ? "آیت الکرسی" : "Ayat-ul-Kursi (Opening)",
                 arabic: "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ",
                 transliteration: "Allāhu lā ilāha illā Huwal-Ḥayyul-Qayyūm",
-                meaning: "Allah — there is no deity except Him, the Ever-Living, the Sustainer of all existence.",
-                insight: "Brings true peace of mind knowing Allah is always watching over and protecting us.",
+                meaning: lang === "ur" ? "اللہ، اس کے سوا کوئی معبود نہیں، وہ ہمیشہ زندہ اور سب کو قائم رکھنے والا ہے۔" : "Allah — there is no deity except Him, the Ever-Living, the Sustainer of all existence.",
+                insight: lang === "ur" ? "اس مبارک آیت سے دل کو دائمی سکون اور اللہ پر توکل نصیب ہوتا ہے۔" : "Brings true peace of mind knowing Allah is always watching over and protecting us.",
               },
             ].map((card) => (
               <div
@@ -1296,7 +1401,7 @@ export default function HomePage() {
                       {card.title}
                     </span>
                     <span className="text-[10px] font-semibold text-amber-800 bg-amber-100/70 px-2 py-0.5 rounded-md">
-                      Sample Lesson
+                      {lang === "ur" ? "نمونہ سبق" : "Sample Lesson"}
                     </span>
                   </div>
 
@@ -1321,7 +1426,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="bg-amber-50/90 rounded-xl p-3 border border-amber-200/70 text-[11px] text-amber-950 leading-relaxed">
-                  <strong>💡 Why it matters:</strong> {card.insight}
+                  <strong>💡 {lang === "ur" ? "سبق آموز نکتہ:" : "Why it matters:"}</strong> {card.insight}
                 </div>
               </div>
             ))}
@@ -1333,14 +1438,13 @@ export default function HomePage() {
               href="/learn-the-meaning"
               className="inline-flex items-center gap-2 bg-[#0f3d2e] hover:bg-[#145c42] text-white font-bold text-sm px-7 py-3.5 rounded-full transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
             >
-              <span>Explore All Word &amp; Verse Meanings</span>
-              <span>→</span>
+              <span>{t.learnMeaning.cta}</span>
             </Link>
             <Link
               href="/book-trial"
               className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-[#0f3d2e] font-bold text-sm px-7 py-3.5 rounded-full transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
             >
-              <span>Book 3 Free Trial Classes</span>
+              <span>{t.hero.bookTrialBtn}</span>
             </Link>
           </div>
 
@@ -1357,19 +1461,21 @@ export default function HomePage() {
           <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 sm:p-12 border border-amber-400/30 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
             
             {/* Left Column: Headline, Copy, and Form */}
-            <div className="flex-1 text-center lg:text-left space-y-4">
+            <div className="flex-1 text-center lg:text-start space-y-4">
               <div className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-400/40 rounded-full px-3.5 py-1">
                 <span className="text-amber-300 text-xs font-bold uppercase tracking-wider">
-                  🎁 Free Downloadable Resource
+                  🎁 {lang === "ur" ? "مفت تعلیمی تحفہ" : "Free Downloadable Resource"}
                 </span>
               </div>
 
               <h2 className="text-2xl sm:text-4xl font-extrabold leading-tight text-white">
-                Free Arabic Alphabet Chart
+                {lang === "ur" ? "مفت عربی حروفِ تہجی چارٹ" : "Free Arabic Alphabet Chart"}
               </h2>
 
               <p className="text-stone-200 text-sm sm:text-base leading-relaxed max-w-xl">
-                Get started today with our free printable Arabic Alphabet Chart — perfect for beginners and children. Covers all 28 letters, clear English transliterations, and Makhārij pronunciation points.
+                {lang === "ur"
+                  ? "آج ہی ہمارا خوبصورت پرنٹ ایبل عربی حروف تہجی چارٹ ڈاؤنلوڈ کریں — تمام ۲۸ حروف، تلفظ اور درست مخارج کی رہنمائی کے ساتھ۔"
+                  : "Get started today with our free printable Arabic Alphabet Chart — perfect for beginners and children. Covers all 28 letters, clear English transliterations, and Makhārij pronunciation points."}
               </p>
 
               <div className="pt-2">
@@ -1387,16 +1493,16 @@ export default function HomePage() {
                   📖
                 </div>
                 <span className="text-[11px] font-bold text-amber-800 bg-amber-100/80 px-2.5 py-0.5 rounded-full uppercase tracking-wider inline-block mb-2">
-                  Instant Access
+                  {lang === "ur" ? "فوری رسائی" : "Instant Access"}
                 </span>
                 <p className="font-extrabold text-stone-900 text-lg mb-1 group-hover:text-[#0f3d2e] transition-colors">
-                  The Arabic Alphabet Chart
+                  {lang === "ur" ? "عربی حروف تہجی چارٹ" : "The Arabic Alphabet Chart"}
                 </p>
                 <p className="text-stone-500 text-xs mb-4 leading-relaxed">
-                  All 28 Letters • Pronunciation Keys • High-Resolution Printable A4
+                  {lang === "ur" ? "تمام ۲۸ حروف • تلفظ کی کلید • A4 پرنٹ ایبل" : "All 28 Letters • Pronunciation Keys • High-Resolution Printable A4"}
                 </p>
                 <span className="inline-flex items-center text-xs font-bold text-[#145c42] group-hover:text-amber-600 transition-colors">
-                  View Printable Chart <span className="ml-1 group-hover:translate-x-1 transition-transform">→</span>
+                  {lang === "ur" ? "چارٹ دیکھیں" : "View Printable Chart"} <span className="ms-1 group-hover:translate-x-1 transition-transform">→</span>
                 </span>
               </Link>
             </div>
@@ -1447,22 +1553,21 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-500/30 rounded-full px-4 py-1.5 mb-6">
             <span className="text-amber-400 text-xs font-semibold uppercase tracking-widest">
-              Limited Spots Available
+              {t.finalCta.badge}
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
-            Ready to Begin Your{" "}
-            <span className="text-amber-400">Quranic Journey?</span>
+            {t.finalCta.title}
           </h2>
           <p className="text-stone-300 text-lg mb-8 max-w-2xl mx-auto">
-            Book 3 completely free trial classes. No payment card required. Experience our teaching style risk-free and decide at your own pace.
+            {t.finalCta.desc}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/book-trial"
               className="inline-flex items-center justify-center bg-amber-500 hover:bg-amber-400 text-[#0f3d2e] font-bold text-base px-8 py-4 rounded-full transition-all duration-200 shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50 hover:-translate-y-0.5"
             >
-              📋 Book Free Trial Form
+              📋 {t.finalCta.button}
             </Link>
             <a
               href="https://wa.me/923712215078?text=Assalamu%20Alaikum%2C%20I'm%20interested%20in%20learning%20more%20about%20Al%20Rauf%20International%20Quran%20Academy"
@@ -1470,7 +1575,7 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center border-2 border-white/30 hover:border-amber-400/60 text-white hover:text-amber-400 font-semibold text-base px-8 py-4 rounded-full transition-all duration-200"
             >
-              💬 WhatsApp Us
+              💬 {t.finalCta.whatsapp}
             </a>
           </div>
         </div>
@@ -1491,13 +1596,13 @@ export default function HomePage() {
                 <div className="w-9 h-9 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-md flex-shrink-0">
                   <span className="text-[#0f3d2e] font-bold text-sm">R</span>
                 </div>
-                <div className="leading-tight text-left">
+                <div className="leading-tight text-start">
                   <p className="text-white font-bold text-sm tracking-tight">Al Rauf</p>
                   <p className="text-amber-400 font-medium text-[11px] tracking-tight">International Quran Academy</p>
                 </div>
               </div>
               <p className="text-sm leading-relaxed mb-5 max-w-xs">
-                Bringing authentic Quranic education to every home, worldwide. Qualified Pakistani teachers, flexible scheduling, and a nurturing learning environment for all ages.
+                {t.footer.desc}
               </p>
               {/* Social icons */}
               <div className="flex gap-3">
@@ -1516,7 +1621,7 @@ export default function HomePage() {
 
             {/* Link columns */}
             <div>
-              <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Courses</h4>
+              <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">{t.footer.courses}</h4>
               <ul className="space-y-2.5">
                 {["Noorani Qaida", "Quran Reading", "Tajweed", "Hifz", "Islamic Studies"].map((course) => (
                   <li key={course}>
@@ -1528,58 +1633,62 @@ export default function HomePage() {
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Resources</h4>
+              <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">{t.footer.resources}</h4>
               <ul className="space-y-2.5">
                 <li>
                   <Link href="/learn-the-meaning" className="text-sm text-amber-400 font-semibold hover:underline transition-colors flex items-center gap-1.5">
-                    <span>📖 Learn the Meaning</span>
+                    <span>📖 {t.learnMeaning.tag}</span>
                   </Link>
                 </li>
                 <li>
                   <Link href="/refer" className="text-sm hover:text-amber-400 transition-colors flex items-center gap-1.5">
-                    <span>🎁 Refer a Friend (10% Off)</span>
+                    <span>🎁 {lang === "ur" ? "دوست کو ریفر کریں (10% رعایت)" : "Refer a Friend (10% Off)"}</span>
                   </Link>
                 </li>
                 <li>
                   <Link href="/resources/arabic-alphabet-chart" className="text-sm hover:text-amber-400 transition-colors">
-                    Arabic Alphabet Chart
+                    {lang === "ur" ? "عربی حروف تہجی چارٹ" : "Arabic Alphabet Chart"}
                   </Link>
                 </li>
                 <li>
                   <Link href="/pricing" className="text-sm hover:text-amber-400 transition-colors">
-                    Course Fee Structure
+                    {lang === "ur" ? "فیس اور پیکجز" : "Course Fee Structure"}
                   </Link>
                 </li>
                 <li>
                   <Link href="/teachers" className="text-sm hover:text-amber-400 transition-colors">
-                    Meet Our Scholars
+                    {t.nav.teachers}
                   </Link>
                 </li>
                 <li>
                   <Link href="/book-trial" className="text-sm hover:text-amber-400 transition-colors">
-                    3 Free Trial Classes
+                    {t.nav.bookTrial}
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Support</h4>
+              <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">{t.footer.support}</h4>
               <ul className="space-y-2.5">
-                <li><Link href="/faq" className="text-sm hover:text-amber-400 transition-colors">Frequently Asked Questions</Link></li>
-                <li><Link href="/about" className="text-sm hover:text-amber-400 transition-colors">About Our Story</Link></li>
-                <li><Link href="/register" className="text-sm hover:text-amber-400 transition-colors">Student Registration</Link></li>
-                <li><Link href="/contact" className="text-sm hover:text-amber-400 transition-colors">Contact Support</Link></li>
+                <li><Link href="/faq" className="text-sm hover:text-amber-400 transition-colors">{t.nav.faq}</Link></li>
+                <li><Link href="/about" className="text-sm hover:text-amber-400 transition-colors">{t.nav.about}</Link></li>
+                <li><Link href="/register" className="text-sm hover:text-amber-400 transition-colors">{t.nav.register}</Link></li>
+                <li><Link href="/contact" className="text-sm hover:text-amber-400 transition-colors">{t.nav.contact}</Link></li>
               </ul>
             </div>
           </div>
 
           {/* Bottom bar */}
           <div className="border-t border-stone-700/60 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-            <p>&copy; {new Date().getFullYear()} Al Rauf International Quran Academy. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} {t.footer.rights}</p>
             <div className="flex items-center gap-4 text-stone-400">
-              <Link href="/privacy-policy" className="hover:text-amber-400 transition-colors">Privacy Policy</Link>
+              <Link href="/privacy-policy" className="hover:text-amber-400 transition-colors">
+                {lang === "ur" ? "پرائیویسی پالیسی" : "Privacy Policy"}
+              </Link>
               <span>•</span>
-              <Link href="/terms-of-service" className="hover:text-amber-400 transition-colors">Terms of Service</Link>
+              <Link href="/terms-of-service" className="hover:text-amber-400 transition-colors">
+                {lang === "ur" ? "شرائط و ضوابط" : "Terms of Service"}
+              </Link>
             </div>
           </div>
         </div>

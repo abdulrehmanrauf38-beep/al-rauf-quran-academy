@@ -4,7 +4,7 @@ import { Resend } from "resend";
 const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM = "Al Rauf International Quran Academy <onboarding@resend.dev>";
 const NOTIFY = process.env.NOTIFICATION_EMAIL || "alraufquranacademy1@gmail.com";
-const BASE_URL = "https://globalquraninstitute.com";
+const BASE_URL = "https://al-rauf-quran-academy.vercel.app";
 
 export async function POST(req: NextRequest) {
   try {

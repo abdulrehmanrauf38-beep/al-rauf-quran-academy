@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const BASE_URL = "https://globalquraninstitute.com";
+const BASE_URL = "https://al-rauf-quran-academy.vercel.app";
 
 export default function robots(): MetadataRoute.Robots {
   return {
