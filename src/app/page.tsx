@@ -962,19 +962,38 @@ export default function HomePage() {
                   <p className="text-stone-300 text-sm italic">{lang === "ur" ? "اللہ کے بابرکت نام سے" : "In the name of Allah"}</p>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {[
-                    { label: lang === "ur" ? "ممالک" : "Countries Served", value: "30+" },
-                    { label: lang === "ur" ? "زیرِ تعلیم طلبہ" : "Students Enrolled", value: "500+" },
-                    { label: lang === "ur" ? "ہفتہ وار کلاسز" : "Classes per Week", value: "1,200+" },
-                    { label: lang === "ur" ? "اطمینان کی شرح" : "Satisfaction Rate", value: "98%" },
-                  ].map(({ label, value }) => (
+                    {
+                      icon: "🎓",
+                      label: lang === "ur" ? "حافظِ قرآن بانی" : "Founded by a Hafiz-e-Quran",
+                      desc: lang === "ur" ? "حافظ عبدالرؤف کی ذاتی تربیت اور نگرانی میں ہر استاد کا انتخاب" : "Led by Hafiz Abdul Rauf, personally training and vetting every teacher",
+                    },
+                    {
+                      icon: "📜",
+                      label: lang === "ur" ? "اجازت یافتہ اساتذہ" : "Ijazah-Certified Teachers",
+                      desc: lang === "ur" ? "ہر استاد کے پاس روایتی سند و اجازت" : "Every tutor holds verified traditional Quranic certification",
+                    },
+                    {
+                      icon: "👩‍🏫",
+                      label: lang === "ur" ? "خواتین معلمات دستیاب" : "Female Tutors Available",
+                      desc: lang === "ur" ? "بہنوں اور بچیوں کے لیے پُرسکون اور محفوظ تعلیمی ماحول" : "Dedicated, comfortable learning environment for girls and women",
+                    },
+                    {
+                      icon: "🎁",
+                      label: lang === "ur" ? "۳ مفت ٹرائل کلاسز" : "3 Free Trial Classes",
+                      desc: lang === "ur" ? "کوئی پیشگی ادائیگی نہیں — داخلے سے پہلے معیار خود پرکھیں" : "No payment required — experience our teaching before you commit",
+                    },
+                  ].map(({ icon, label, desc }) => (
                     <div
                       key={label}
-                      className="flex items-center justify-between border-b border-white/10 pb-3 last:border-0 last:pb-0"
+                      className="flex items-start gap-3 border-b border-white/10 pb-3 last:border-0 last:pb-0"
                     >
-                      <span className="text-stone-300 text-sm">{label}</span>
-                      <span className="text-amber-400 font-bold text-xl">{value}</span>
+                      <span className="text-xl leading-none mt-0.5 flex-shrink-0">{icon}</span>
+                      <div>
+                        <p className="text-amber-400 font-semibold text-sm leading-snug">{label}</p>
+                        <p className="text-stone-300 text-xs mt-0.5 leading-relaxed">{desc}</p>
+                      </div>
                     </div>
                   ))}
                 </div>

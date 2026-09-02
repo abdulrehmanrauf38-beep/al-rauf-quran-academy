@@ -165,8 +165,8 @@ export const translations: Record<Language, Translations> = {
       bullet3: "Flexible Timing for All Time Zones",
       bookTrialBtn: "Book 3 Free Trials →",
       exploreBtn: "Explore Courses",
-      ratingText: "4.9/5 Rating (120+ Families)",
-      countriesText: "Active Students in 12+ Countries",
+      ratingText: "Trusted by Families Worldwide",
+      countriesText: "USA, UK, Canada, Australia & Beyond",
       guarantee: "100% Satisfaction Guarantee • Cancel Anytime",
     },
     stats: {
@@ -303,7 +303,7 @@ export const translations: Record<Language, Translations> = {
       tag: "Parent & Student Feedback",
       title: "What Our Global Families Say",
       subtitle:
-        "Over 120+ families across the UK, USA, Canada, and Australia trust Al Rauf International Quran Academy.",
+        "Families across the UK, USA, Canada, and Australia trust Al Rauf International Quran Academy.",
       items: [
         {
           quote:
@@ -391,8 +391,8 @@ export const translations: Record<Language, Translations> = {
       bullet3: "آپ کے ملکی وقت کے مطابق لچکدار اوقات",
       bookTrialBtn: "۳ مفت ٹرائل کلاسز حاصل کریں ←",
       exploreBtn: "تمام کورسز دیکھیں",
-      ratingText: "4.9/5 ریٹنگ (120+ مطمئن خاندان)",
-      countriesText: "۱۲ سے زائد ممالک میں زیرِ تعلیم طلبہ",
+      ratingText: "دنیا بھر کے خاندانوں کا اعتماد",
+      countriesText: "امریکہ، برطانیہ، کینہڈا، آسٹریلیا و دیگر ممالک",
       guarantee: "۱۰۰٪ اطمینان کی ضمانت • کسی بھی وقت منسوخ کریں",
     },
     stats: {
@@ -529,7 +529,7 @@ export const translations: Record<Language, Translations> = {
       tag: "والدین کے تاثرات",
       title: "ہمارے مطمئن والدین کیا کہتے ہیں؟",
       subtitle:
-        "برطانیہ، امریکہ، کینیڈا اور آسٹریلیا بھر سے ۱۲۰ سے زائد خاندان الرؤف انٹرنیشنل قرآن اکیڈمی پر مکمل اعتماد کرتے ہیں۔",
+        "برطانیہ، امریکہ، کینیڈا اور آسٹریلیا بھر سے مسلم خاندان الرؤف انٹرنیشنل قرآن اکیڈمی پر مکمل اعتماد کرتے ہیں۔",
       items: [
         {
           quote:
