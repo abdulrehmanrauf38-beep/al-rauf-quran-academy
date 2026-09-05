@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Book 3 Free Trial Quran Classes - No Obligation",
   description:
-    "Book your 3 free online Quran trial classes with Al Rauf International Quran Academy. No credit card or payment required. Choose your preferred course, time zone, and student age. Qualified Pakistani teachers online.",
+    "Book 3 free online Quran trial classes at Al Rauf Academy. No credit card required. Choose your course, time zone, and student age to get started.",
   alternates: { canonical: "https://al-rauf-quran-academy.vercel.app/book-trial" },
   openGraph: {
     title: "Book 3 Free Online Quran Trial Classes | Al Rauf International Quran Academy",

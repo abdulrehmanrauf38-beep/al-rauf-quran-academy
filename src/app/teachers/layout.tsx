@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Our Quran Teachers - Certified Pakistani Scholars",
   description:
-    "Meet Al Rauf International Quran Academy's certified Quran tutors — Ijazah-holding Pakistani scholars with years of online teaching experience. Dedicated female tutors available for sisters and girls.",
+    "Meet Al Rauf Academy's certified Quran tutors. Ijazah-holding Pakistani scholars with 1-on-1 teaching experience. Dedicated female tutors available.",
   alternates: { canonical: "https://al-rauf-quran-academy.vercel.app/teachers" },
   openGraph: {
     title: "Meet Our Quran Teachers | Al Rauf International Quran Academy",

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Refer a Friend & Family Member — Get 10% Off",
   description:
-    "Refer a friend or family member to Al Rauf International Quran Academy. When they enroll in our online Quran classes, you both receive 10% off your next month's tuition.",
+    "Refer friends or family to Al Rauf Quran Academy. When they enrol in online Quran classes, you both receive 10% off your next month's tuition.",
   alternates: {
     canonical: "https://al-rauf-quran-academy.vercel.app/refer",
   },

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us - Our Story & Mission",
+  title: "About Al Rauf – Our Story & Quran Teaching Values",
   description:
-    "Learn why Al Rauf International Quran Academy was founded: to make authentic, 1-on-1 Quran education accessible to Muslim families worldwide through patient, personalised online teaching from qualified Pakistani scholars.",
+    "Meet the team behind Al Rauf Quran Academy. Learn our founding story, Islamic values, and why families trust our certified Pakistani scholars worldwide.",
   alternates: { canonical: "https://al-rauf-quran-academy.vercel.app/about" },
   openGraph: {
     title: "About Al Rauf International Quran Academy - Our Story & Mission",

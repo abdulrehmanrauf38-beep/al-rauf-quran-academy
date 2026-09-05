@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Register & Enrol in Online Quran Classes",
   description:
-    "Enrol in online Quran classes at Al Rauf International Quran Academy. Complete the simple registration form to choose your course (Noorani Qaida, Tajweed, Hifz & more), schedule, and class frequency.",
+    "Register for 1-on-1 online Quran classes at Al Rauf Academy. Choose your course, class frequency, and schedule. Qualified Pakistani teachers ready.",
   alternates: { canonical: "https://al-rauf-quran-academy.vercel.app/register" },
   openGraph: {
     title: "Register for Online Quran Classes | Al Rauf International Quran Academy",

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact Us - WhatsApp, Email & Support",
   description:
-    "Get in touch with Al Rauf International Quran Academy. Reach us via WhatsApp (+92 371 2215078) or email for enquiries about online Quran classes, scheduling, pricing, or to request a female tutor.",
+    "Reach Al Rauf Quran Academy via WhatsApp (+92 371 2215078) or email. Questions about online classes, scheduling, pricing, or requesting a female tutor welcome.",
   alternates: { canonical: "https://al-rauf-quran-academy.vercel.app/contact" },
   openGraph: {
     title: "Contact Al Rauf International Quran Academy | WhatsApp & Email Support",

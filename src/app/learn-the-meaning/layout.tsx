@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Understand What You Recite — Quran Word Meanings & Reflections",
+  title: "Understand What You Recite - Quran Word Meanings",
   description:
-    "Explore common Quranic verses and daily phrases with accurate English meanings and child-friendly reflections. Learn the meaning behind your recitation at Al Rauf International Quran Academy.",
+    "Explore common Quranic verses and phrases with English meanings and reflections. Understand what you recite with Al Rauf International Quran Academy.",
   alternates: {
     canonical: "https://al-rauf-quran-academy.vercel.app/learn-the-meaning",
   },

@@ -30,7 +30,7 @@ export async function generateMetadata({
   const url = `https://al-rauf-quran-academy.vercel.app/blog/${post.slug}`;
 
   return {
-    title: `${post.title} | Al Rauf Quran Academy`,
+    title: post.title.length > 34 ? `${post.title.slice(0, 31)}...` : post.title,
     description: post.excerpt,
     alternates: {
       canonical: url,

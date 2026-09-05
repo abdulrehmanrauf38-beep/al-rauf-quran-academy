@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Online Quran Class Pricing - Affordable 1-on-1 Lessons",
   description:
-    "Transparent, affordable pricing for online Quran classes at Al Rauf International Quran Academy. Noorani Qaida from $3/class, Quran Reading $4, Tajweed $6, Hifz $5. Islamic Studies FREE. No hidden fees.",
+    "Transparent, affordable Quran class pricing at Al Rauf Academy. Noorani Qaida from $3/class, Tajweed $6, Hifz $5. Islamic Studies FREE. No hidden fees.",
   alternates: { canonical: "https://al-rauf-quran-academy.vercel.app/pricing" },
   openGraph: {
     title: "Online Quran Class Pricing | Al Rauf International Quran Academy",

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "FAQ - Common Questions About Online Quran Classes",
   description:
-    "Answers to frequently asked questions about Al Rauf International Quran Academy: how online Quran classes work, scheduling across time zones, female tutors, free trial, payment, and more.",
+    "Find answers to common questions about Al Rauf Quran Academy: how online classes work, time zone scheduling, female tutors, free trials, and tuition.",
   alternates: { canonical: "https://al-rauf-quran-academy.vercel.app/faq" },
   openGraph: {
     title: "FAQs About Online Quran Classes | Al Rauf International Quran Academy",

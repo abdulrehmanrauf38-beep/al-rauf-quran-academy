@@ -4,9 +4,9 @@ import { BLOG_POSTS } from "@/data/blog";
 import BlogHeader from "@/components/BlogHeader";
 
 export const metadata: Metadata = {
-  title: "Blog & Quran Learning Guides | Al Rauf Quran Academy",
+  title: "Blog & Quran Learning Guides",
   description:
-    "Explore practical guides on Noorani Qaida, Tajweed rules, online Quran classes for kids and sisters, and Quranic Arabic from Al Rauf Quran Academy scholars.",
+    "Explore practical guides on Noorani Qaida, Tajweed rules, online Quran classes for kids & sisters, and Quranic Arabic from Al Rauf Academy scholars.",
   alternates: {
     canonical: "https://al-rauf-quran-academy.vercel.app/blog",
   },
