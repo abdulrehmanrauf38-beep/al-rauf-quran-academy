@@ -6,6 +6,7 @@ export interface Translations {
     about: string;
     teachers: string;
     pricing: string;
+    blog: string;
     faq: string;
     contact: string;
     register: string;
@@ -132,6 +133,12 @@ export interface Translations {
     button: string;
     whatsapp: string;
   };
+  blogPreview: {
+    tag: string;
+    title: string;
+    subtitle: string;
+    viewAllBtn: string;
+  };
   footer: {
     desc: string;
     quickLinks: string;
@@ -149,6 +156,7 @@ export const translations: Record<Language, Translations> = {
       about: "About",
       teachers: "Teachers",
       pricing: "Pricing",
+      blog: "Blog",
       faq: "FAQ",
       contact: "Contact",
       register: "Register",
@@ -359,6 +367,13 @@ export const translations: Record<Language, Translations> = {
       button: "Book 3 Free Trial Classes →",
       whatsapp: "Chat on WhatsApp",
     },
+    blogPreview: {
+      tag: "Latest from Our Blog",
+      title: "Quran Learning Guides & Insights",
+      subtitle:
+        "Explore practical guides on Noorani Qaida, Tajweed rules, and Quran education from our certified scholars.",
+      viewAllBtn: "View All Articles",
+    },
     footer: {
       desc: "Al Rauf International Quran Academy provides certified 1-on-1 online Quran and Islamic education to families across the USA, UK, Canada, Australia, and worldwide.",
       quickLinks: "Quick Links",
@@ -375,6 +390,7 @@ export const translations: Record<Language, Translations> = {
       about: "ہمارے متعلق",
       teachers: "اساتذہ کرام",
       pricing: "فیس و پیکجز",
+      blog: "بلاگ",
       faq: "عام سوالات",
       contact: "رابطہ کریں",
       register: "رجسٹریشن",
@@ -584,6 +600,13 @@ export const translations: Record<Language, Translations> = {
       desc: "مشفق اور مستند اساتذہ کے ساتھ ۳ مفت ٹرائل کلاسز لیں۔ خود تعلیمی ماحول کا تجربہ کریں اور مطمئن ہونے پر داخلہ لیں۔",
       button: "۳ مفت ٹرائل کلاسز بک کریں ←",
       whatsapp: "واٹس ایپ پر رابطہ کریں",
+    },
+    blogPreview: {
+      tag: "ہمارا بلاگ و مضامین",
+      title: "قرآنی تعلیم و تجوید کے مفید مضامین",
+      subtitle:
+        "نورانی قاعدہ، تجوید کے قواعد اور اسلامی تربیت کے بارے میں ہمارے مستند اساتذہ کے مضامین پڑھیں۔",
+      viewAllBtn: "تمام مضامین دیکھیں",
     },
     footer: {
       desc: "الرؤف انٹرنیشنل قرآن اکیڈمی امریکہ، برطانیہ، کینیڈا، آسٹریلیا اور دنیا بھر کے مسلمانوں کو اعلیٰ معیار کی انفرادی آن لائن قرآنی تعلیم فراہم کرتی ہے۔",

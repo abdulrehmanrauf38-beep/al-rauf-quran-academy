@@ -8,6 +8,8 @@ export interface BlogPost {
   author: string;
   authorRole: string;
   coverEmoji: string;
+  readMoreText: string;
+  conclusionLabel: string;
   content: {
     intro: string[];
     sections: {
@@ -30,6 +32,8 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Qari Abdul Rauf",
     authorRole: "Head Scholar & Academic Director",
     coverEmoji: "📖",
+    readMoreText: "Read the full article on Noorani Qaida",
+    conclusionLabel: "Foundational Takeaway",
     content: {
       intro: [
         "Learning to recite the Holy Quran correctly starts with building a solid foundation in the Arabic alphabet and phonetic rules. For centuries, Noorani Qaida has served as the universal curriculum for both children and adult beginners worldwide.",
@@ -81,6 +85,8 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Ustadh Muhammad Bilal",
     authorRole: "Senior Tajweed Specialist",
     coverEmoji: "✨",
+    readMoreText: "Read the full article on Tajweed rules",
+    conclusionLabel: "Spiritual Reflection & Tajweed Mastery",
     content: {
       intro: [
         "The word 'Tajweed' linguistically means 'betterment' or 'making something beautiful'. In Islamic terminology, it refers to the science of giving every letter of the Quran its rights and dues from its authentic articulation point (Makhraj) and inherent characteristics (Sifat).",
@@ -127,6 +133,8 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Ustadha Fatima Noor",
     authorRole: "Head of Female Department",
     coverEmoji: "🌸",
+    readMoreText: "Read the full article on Female Quran Tutors",
+    conclusionLabel: "Nurturing Environment Takeaway",
     content: {
       intro: [
         "In modern Islamic education, creating a safe, comfortable, and respectful environment is essential for effective learning. For many sisters and young children, learning with a female tutor offers peace of mind and tailored mentorship.",
@@ -166,6 +174,8 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Qari Abdul Rauf",
     authorRole: "Academic Director",
     coverEmoji: "💻",
+    readMoreText: "Read the full article on 1-on-1 Online Quran Classes",
+    conclusionLabel: "Key Educational Takeaway",
     content: {
       intro: [
         "In Western countries like the United States, United Kingdom, Canada, and Australia, finding a qualified Quran teacher nearby with a flexible schedule can be challenging. Online Quran learning has revolutionized how families connect with Islamic education.",

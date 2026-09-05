@@ -244,6 +244,7 @@ const FOOTER_LINKS: Record<string, string[]> = {
 };
 
 import { translations, Language } from "@/data/translations";
+import { BLOG_POSTS } from "@/data/blog";
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -258,6 +259,7 @@ export default function HomePage() {
     { name: t.nav.about, href: "/about" },
     { name: t.nav.teachers, href: "/teachers" },
     { name: t.nav.pricing, href: "/pricing" },
+    { name: t.nav.blog, href: "/blog" },
     { name: t.nav.faq, href: "/faq" },
     { name: t.nav.contact, href: "/contact" },
     { name: t.nav.register, href: "/register" },
@@ -1220,6 +1222,7 @@ export default function HomePage() {
                 </p>
                 <Link
                   href="/about"
+                  aria-label={lang === "ur" ? "بانی کا مکمل پیغام اور ادارے کے بارے میں مزید پڑھیں" : "Read the full story about our founder and academy mission"}
                   className="inline-flex items-center text-xs sm:text-sm font-bold text-[#145c42] hover:text-amber-700 transition-colors group"
                 >
                   {t.founder.readStory} <span className="ms-1 group-hover:translate-x-1 transition-transform">→</span>
@@ -1395,6 +1398,7 @@ export default function HomePage() {
                 transliteration: "Bismillāhir-Raḥmānir-Raḥīm",
                 meaning: lang === "ur" ? "شروع اللہ کے نام سے جو بڑا مہربان نہایت رحم فرمانے والا ہے۔" : "In the name of Allah, the Entirely Merciful, the Especially Merciful.",
                 insight: lang === "ur" ? "ہر کام سے پہلے اسے پڑھنے سے اللہ تعالیٰ کی رحمت اور حفاظت حاصل ہوتی ہے۔" : "Saying this before any action invites Allah's divine blessing and protection.",
+                label: lang === "ur" ? "سبق آموز نکتہ:" : "Why this matters:",
               },
               {
                 title: lang === "ur" ? "تحمید (الحمد للہ)" : "Alhamdulillah",
@@ -1402,6 +1406,7 @@ export default function HomePage() {
                 transliteration: "Al-ḥamdu lillāhi Rabbil-ʿālamīn",
                 meaning: lang === "ur" ? "تمام تعریفیں اور شکر اللہ ہی کے لیے ہیں جو تمام جہانوں کا پالنے والا ہے۔" : "All praise and gratitude belong to Allah alone, the Lord of all the worlds.",
                 insight: lang === "ur" ? "یہ کلمہ انسان کے دل میں رب کی نعمتوں پر حقیقی شکر گزاری پیدا کرتا ہے۔" : "Instills heartfelt gratitude in children for every blessing in their daily lives.",
+                label: lang === "ur" ? "عملی زندگی میں اہمیت:" : "Daily life reflection:",
               },
               {
                 title: lang === "ur" ? "آیت الکرسی" : "Ayat-ul-Kursi (Opening)",
@@ -1409,6 +1414,7 @@ export default function HomePage() {
                 transliteration: "Allāhu lā ilāha illā Huwal-Ḥayyul-Qayyūm",
                 meaning: lang === "ur" ? "اللہ، اس کے سوا کوئی معبود نہیں، وہ ہمیشہ زندہ اور سب کو قائم رکھنے والا ہے۔" : "Allah — there is no deity except Him, the Ever-Living, the Sustainer of all existence.",
                 insight: lang === "ur" ? "اس مبارک آیت سے دل کو دائمی سکون اور اللہ پر توکل نصیب ہوتا ہے۔" : "Brings true peace of mind knowing Allah is always watching over and protecting us.",
+                label: lang === "ur" ? "روحانی اثر و برکت:" : "Spiritual protection & benefit:",
               },
             ].map((card) => (
               <div
@@ -1446,7 +1452,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="bg-amber-50/90 rounded-xl p-3 border border-amber-200/70 text-[11px] text-amber-950 leading-relaxed">
-                  <strong>💡 {lang === "ur" ? "سبق آموز نکتہ:" : "Why it matters:"}</strong> {card.insight}
+                  <strong>💡 {card.label}</strong> {card.insight}
                 </div>
               </div>
             ))}
@@ -1527,6 +1533,79 @@ export default function HomePage() {
               </Link>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* ── LATEST FROM BLOG ── */}
+      <section id="blog-preview" aria-labelledby="blog-preview-heading" className="py-16 md:py-20 bg-stone-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section header */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-full px-4 py-1.5 mb-4">
+              <span className="text-[#0f3d2e] text-xs font-semibold uppercase tracking-widest">
+                ✍️ {t.blogPreview.tag}
+              </span>
+            </div>
+            <h2 id="blog-preview-heading" className="text-2xl sm:text-3xl font-extrabold text-stone-900 mb-3">
+              {t.blogPreview.title}
+            </h2>
+            <p className="text-stone-500 text-base max-w-xl mx-auto">
+              {t.blogPreview.subtitle}
+            </p>
+          </div>
+
+          {/* Blog cards grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+            {BLOG_POSTS.slice(0, 3).map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="group flex flex-col bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 overflow-hidden"
+              >
+                {/* Card top accent */}
+                <div className="h-1.5 w-full bg-gradient-to-r from-[#0f3d2e] to-emerald-500" />
+
+                <div className="flex-1 flex flex-col p-6">
+                  {/* Emoji + category */}
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="text-2xl" role="img" aria-label={post.category}>{post.coverEmoji}</span>
+                    <span className="text-[11px] font-bold text-[#0f3d2e] bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                      {post.category}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <p className="font-bold text-stone-900 text-base leading-snug mb-2 group-hover:text-[#0f3d2e] transition-colors line-clamp-2">
+                    {post.title}
+                  </p>
+
+                  {/* Excerpt */}
+                  <p className="text-stone-500 text-sm leading-relaxed line-clamp-3 flex-1">
+                    {post.excerpt}
+                  </p>
+
+                  {/* Footer */}
+                  <div className="mt-4 pt-4 border-t border-stone-100 flex items-center justify-between">
+                    <span className="text-xs text-stone-400">{post.readTime}</span>
+                    <span className="text-xs font-semibold text-[#0f3d2e] group-hover:text-amber-600 transition-colors flex items-center gap-1">
+                      {lang === "ur" ? "مکمل پڑھیں" : "Read article"}
+                      <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* View all button */}
+          <div className="text-center">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 bg-[#0f3d2e] hover:bg-[#0a2d20] text-white font-semibold text-sm px-7 py-3 rounded-full transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+            >
+              {t.blogPreview.viewAllBtn} →
+            </Link>
           </div>
         </div>
       </section>

@@ -22,6 +22,15 @@ const NAV_LINKS = [
   { name: "Register", href: "/register" },
 ];
 
+const REFLECTION_LABELS = [
+  "Why It Matters",
+  "Spiritual Reflection",
+  "Daily Application",
+  "Core Takeaway",
+  "Faith In Practice",
+  "Practical Wisdom",
+];
+
 export default function LearnTheMeaningPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -210,7 +219,7 @@ export default function LearnTheMeaningPage() {
           </div>
         ) : (
           <div className="grid md:grid-cols-2 gap-7">
-            {filteredMeanings.map((item: WordMeaning) => (
+            {filteredMeanings.map((item: WordMeaning, idx: number) => (
               <div
                 key={item.id}
                 className="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200 shadow-sm hover:shadow-md hover:border-amber-400/60 transition-all flex flex-col justify-between group"
@@ -264,7 +273,7 @@ export default function LearnTheMeaningPage() {
                   <span className="text-lg flex-shrink-0">💡</span>
                   <div>
                     <p className="text-[11px] font-bold text-amber-900 uppercase tracking-wider mb-0.5">
-                      Why It Matters
+                      {REFLECTION_LABELS[idx % REFLECTION_LABELS.length]}
                     </p>
                     <p className="text-xs text-amber-950 leading-relaxed font-normal">
                       {item.whyItMatters}

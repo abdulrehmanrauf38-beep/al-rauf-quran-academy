@@ -71,9 +71,11 @@ export default function BlogIndexPage() {
 
                   <Link
                     href={`/blog/${post.slug}`}
+                    aria-label={post.readMoreText}
                     className="inline-flex items-center text-xs font-bold text-[#145c42] group-hover:text-amber-600 transition-colors"
                   >
-                    Read More <span className="ms-1 group-hover:translate-x-1 transition-transform">→</span>
+                    <span>{post.readMoreText}</span>
+                    <span className="ms-1 group-hover:translate-x-1 transition-transform">→</span>
                   </Link>
                 </div>
               </article>

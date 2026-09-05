@@ -166,7 +166,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {/* Conclusion Callout */}
             <div className="bg-emerald-50/70 border border-emerald-200/80 rounded-2xl p-6 my-8">
               <p className="text-sm font-bold uppercase tracking-wider text-[#0f3d2e] mb-1">
-                Summary &amp; Key Takeaway
+                {post.conclusionLabel}
               </p>
               <p className="text-stone-800 text-sm sm:text-base leading-relaxed font-medium">
                 {post.content.conclusion}
@@ -240,7 +240,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       </p>
                     </div>
                     <span className="text-xs font-semibold text-[#145c42] mt-4 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                      Read article →
+                      {related.readMoreText} →
                     </span>
                   </Link>
                 ))}
