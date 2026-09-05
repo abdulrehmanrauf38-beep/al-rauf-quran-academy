@@ -100,7 +100,7 @@ function NewsletterSignup() {
   return (
     <div className="mb-12 pb-12 border-b border-stone-700/60">
       <div className="max-w-xl">
-        <h3 className="text-white font-bold text-base mb-1">Get Quran Learning Tips &amp; Updates</h3>
+        <p className="text-white font-bold text-base mb-1">Get Quran Learning Tips &amp; Updates</p>
         <p className="text-stone-400 text-sm mb-4">
           Occasional tips, teaching insights, and updates from Al Rauf International Quran Academy. No spam, ever.
         </p>
@@ -628,7 +628,7 @@ export default function HomePage() {
                       <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-xl group-hover:bg-emerald-100 transition-colors flex-shrink-0">
                         {course.emoji}
                       </div>
-                      <h3 className="text-base font-bold text-stone-900 leading-snug">{item.title}</h3>
+                      <p className="text-base font-bold text-stone-900 leading-snug">{item.title}</p>
                     </div>
                     <p className="text-stone-600 text-sm leading-relaxed flex-1">{item.description}</p>
 
@@ -639,9 +639,10 @@ export default function HomePage() {
                       </span>
                       <a
                         href="#contact"
+                        aria-label={lang === "ur" ? `${item.title} کورس کے بارے میں مزید جانیں` : `Learn more about our ${item.title} course`}
                         className="inline-flex items-center text-[#145c42] hover:text-amber-600 font-semibold text-xs transition-colors group/link"
                       >
-                        {t.courses.viewDetails}
+                        {lang === "ur" ? `${item.title} کورس کی تفصیلات` : `Learn more about our ${item.title} course`}
                         <span className="ms-1 group-hover/link:translate-x-1 transition-transform inline-block">→</span>
                       </a>
                     </div>
@@ -656,9 +657,9 @@ export default function HomePage() {
                 <div className="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center text-2xl mb-4">
                   🌟
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <p className="text-lg font-bold mb-2">
                   {lang === "ur" ? "کہاں سے شروع کریں، سمجھ نہیں آ رہا؟" : "Not Sure Where to Start?"}
-                </h3>
+                </p>
                 <p className="text-stone-300 text-sm leading-relaxed mb-3">
                   {lang === "ur"
                     ? "مفت ٹرائل کلاس لیں تاکہ استاد بچے کی موجودہ سطح کا جائزہ لے کر مناسب کورس تجویز کر سکیں۔"
@@ -845,12 +846,12 @@ export default function HomePage() {
                       </span>
                     </div>
 
-                    <h3
+                    <p
                       className="text-xl sm:text-2xl font-extrabold uppercase tracking-widest text-[#0f3d2e]"
                       style={{ fontFamily: "Georgia, Cambria, serif", letterSpacing: "0.12em" }}
                     >
                       Certificate of Completion
-                    </h3>
+                    </p>
                     <div className="flex items-center justify-center gap-2 mt-1">
                       <div className="h-[1px] w-14 bg-amber-400" />
                       <span className="text-amber-600 text-[10px]">✦ ✦ ✦</span>
@@ -1055,7 +1056,7 @@ export default function HomePage() {
                     className="bg-white rounded-2xl p-4 border border-stone-200 shadow-sm hover:border-[#145c42]/40 transition-colors"
                   >
                     <div className="text-2xl mb-2">{item.icon}</div>
-                    <h3 className="font-bold text-stone-900 text-sm mb-1">{item.title}</h3>
+                    <p className="font-bold text-stone-900 text-sm mb-1">{item.title}</p>
                     <p className="text-stone-500 text-xs leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
@@ -1182,9 +1183,9 @@ export default function HomePage() {
                 />
               </div>
               <div className="mt-4">
-                <h3 className="text-lg sm:text-xl font-bold text-stone-900">
+                <p className="text-lg sm:text-xl font-bold text-stone-900">
                   {t.founder.name}
-                </h3>
+                </p>
                 <p className="text-amber-700 font-semibold text-xs sm:text-sm mt-0.5">
                   {t.founder.role}
                 </p>
@@ -1236,9 +1237,9 @@ export default function HomePage() {
                   {t.studentStory.tag}
                 </span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0f3d2e]">
+              <p className="text-2xl sm:text-3xl font-extrabold text-[#0f3d2e]">
                 {t.studentStory.title}
-              </h3>
+              </p>
               <p className="text-stone-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
                 {t.studentStory.desc}
               </p>
@@ -1640,7 +1641,7 @@ export default function HomePage() {
 
             {/* Link columns */}
             <div>
-              <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">{t.footer.courses}</h4>
+              <p className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">{t.footer.courses}</p>
               <ul className="space-y-2.5">
                 {["Noorani Qaida", "Quran Reading", "Tajweed", "Hifz", "Islamic Studies"].map((course) => (
                   <li key={course}>
@@ -1652,7 +1653,7 @@ export default function HomePage() {
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">{t.footer.resources}</h4>
+              <p className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">{t.footer.resources}</p>
               <ul className="space-y-2.5">
                 <li>
                   <Link href="/learn-the-meaning" className="text-sm text-amber-400 font-semibold hover:underline transition-colors flex items-center gap-1.5">
@@ -1687,7 +1688,7 @@ export default function HomePage() {
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">{t.footer.support}</h4>
+              <p className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">{t.footer.support}</p>
               <ul className="space-y-2.5">
                 <li><Link href="/faq" className="text-sm hover:text-amber-400 transition-colors">{t.nav.faq}</Link></li>
                 <li><Link href="/about" className="text-sm hover:text-amber-400 transition-colors">{t.nav.about}</Link></li>

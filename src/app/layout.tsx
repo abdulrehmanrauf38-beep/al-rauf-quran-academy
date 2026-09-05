@@ -19,11 +19,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   verification: { google: "tAAEQN6QqIi6352W8TKt9_7uSni85kr_Vbv9XhWnYLs" },
   title: {
-    default: "Al Rauf International Quran Academy - Online Quran Classes | Learn Quran 1-on-1",
-    template: "%s | Al Rauf International Quran Academy",
+    default: "Al Rauf Quran Academy - Online 1-on-1 Quran Classes",
+    template: "%s | Al Rauf Quran Academy",
   },
   description:
-    "Learn Quran online 1-on-1 with qualified, Ijazah-certified Pakistani teachers. 3 Free Trial Classes, dedicated female tutors for sisters & kids, flexible scheduling across USA, UK, Canada, Australia.",
+    "Learn Quran online 1-on-1 with certified Pakistani teachers. Female tutors available. 3 free trial classes - USA, UK, Canada, Australia welcome.",
   keywords: [
     "online Quran classes",
     "learn Quran online",
@@ -54,9 +54,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: BASE_URL,
     siteName: "Al Rauf International Quran Academy",
-    title: "Al Rauf International Quran Academy - Online Quran Classes | Learn Quran 1-on-1",
+    title: "Al Rauf Quran Academy - Online 1-on-1 Quran Classes",
     description:
-      "Learn Quran online 1-on-1 with qualified Pakistani scholars. 3 free trial classes, dedicated female tutors, all global time zones.",
+      "Learn Quran online 1-on-1 with certified Pakistani teachers. Female tutors available. 3 free trial classes - USA, UK, Canada, Australia welcome.",
     images: [
       {
         url: "/icon.svg",
@@ -68,9 +68,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Al Rauf International Quran Academy - Online Quran Classes",
+    title: "Al Rauf Quran Academy - Online 1-on-1 Quran Classes",
     description:
-      "Learn Quran online 1-on-1 with qualified Pakistani teachers. 3 free trial classes, dedicated female tutors, all time zones.",
+      "Learn Quran online 1-on-1 with certified Pakistani teachers. Female tutors available. 3 free trial classes - USA, UK, Canada, Australia welcome.",
     images: ["/icon.svg"],
   },
   robots: {

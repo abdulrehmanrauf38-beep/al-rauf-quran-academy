@@ -47,9 +47,9 @@ export default function LeadMagnetForm({ className = "", source = "homepage" }: 
           <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-xl">
             ✓
           </div>
-          <h3 className="text-lg font-bold text-amber-400 mb-1">
+          <p className="text-lg font-bold text-amber-400 mb-1">
             Your Free Chart is Ready! 🎉
-          </h3>
+          </p>
           <p className="text-stone-300 text-xs sm:text-sm mb-4 leading-relaxed">
             We&apos;ve sent a copy to your email. You can also view and print your high-resolution chart right now:
           </p>
