@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { BLOG_POSTS } from "@/data/blog";
 import BlogHeader from "@/components/BlogHeader";
 import SocialShareButtons from "@/components/SocialShareButtons";
+import { FooterSocialIcons } from "@/components/SocialLinks";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -254,6 +255,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <footer className="bg-[#0b271d] text-stone-300 py-10 border-t border-stone-800 text-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>© {new Date().getFullYear()} Al Rauf Quran Academy. All rights reserved.</p>
+          <FooterSocialIcons />
           <div className="flex items-center gap-4">
             <Link href="/" className="hover:text-amber-400 transition-colors">Home</Link>
             <Link href="/pricing" className="hover:text-amber-400 transition-colors">Pricing</Link>

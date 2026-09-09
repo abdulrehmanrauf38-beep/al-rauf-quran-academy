@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { FooterSocialIcons } from "@/components/SocialLinks";
 
 function IconMenu() {
   return (
@@ -258,8 +259,9 @@ export default function TermsOfServicePage() {
             </div>
           </div>
 
-          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
             <p>&copy; {new Date().getFullYear()} Al Rauf International Quran Academy. All rights reserved.</p>
+            <FooterSocialIcons />
             <div className="flex items-center gap-4 text-stone-400">
               <Link href="/privacy-policy" className="hover:text-amber-400 transition-colors">Privacy Policy</Link>
               <span>•</span>

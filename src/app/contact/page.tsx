@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { SOCIAL_LINKS, FacebookIcon, InstagramIcon, FooterSocialIcons } from "@/components/SocialLinks";
 
 function IconMenu() {
   return (
@@ -256,6 +257,41 @@ export default function ContactPage() {
                   </p>
                 </div>
               </div>
+
+              {/* Official Social Media Channels */}
+              <div className="bg-white rounded-2xl p-5 border border-stone-200 shadow-sm flex items-start gap-4 hover:border-[#145c42]/40 transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-50 to-emerald-50 flex items-center justify-center flex-shrink-0 text-[#145c42]">
+                  <svg className="w-6 h-6 fill-none stroke-current" strokeWidth={1.75} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-3.056l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-bold text-stone-900 text-sm sm:text-base">Official Social Media</h3>
+                  <p className="text-xs text-stone-500 mb-3">Connect with us and follow our daily Quranic lessons</p>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <a
+                      href={SOCIAL_LINKS.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#1877F2]/10 text-[#1877F2] hover:bg-[#1877F2] hover:text-white border border-[#1877F2]/20 transition-all duration-200 shadow-xs"
+                      aria-label="Al Rauf International Quran Academy on Facebook"
+                    >
+                      <FacebookIcon className="w-3.5 h-3.5" />
+                      Facebook
+                    </a>
+                    <a
+                      href={SOCIAL_LINKS.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#E4405F]/10 text-[#E4405F] hover:bg-gradient-to-r hover:from-amber-500 hover:via-pink-500 hover:to-purple-600 hover:text-white border border-[#E4405F]/20 transition-all duration-200 shadow-xs"
+                      aria-label="Al Rauf International Quran Academy on Instagram"
+                    >
+                      <InstagramIcon className="w-3.5 h-3.5" />
+                      Instagram
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Quick Free Trial Banner */}
@@ -428,8 +464,9 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
             <p>&copy; {new Date().getFullYear()} Al Rauf International Quran Academy. All rights reserved.</p>
+            <FooterSocialIcons />
             <div className="flex items-center gap-4 text-stone-400">
               <Link href="/privacy-policy" className="hover:text-amber-400 transition-colors">Privacy Policy</Link>
               <span>•</span>

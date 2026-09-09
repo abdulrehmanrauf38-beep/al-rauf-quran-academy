@@ -100,6 +100,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       "Online 1-on-1 Quran Academy offering Noorani Qaida, Quran Reading, Tajweed, Hifz, and Islamic Studies with qualified Pakistani scholars worldwide.",
     email: "alraufquranacademy1@gmail.com",
     telephone: "+923712215078",
+    sameAs: [
+      "https://www.facebook.com/profile.php?id=61570785205133",
+      "https://www.instagram.com/alrauf.quran.academy/",
+    ],
     areaServed: [
       { "@type": "AdministrativeArea", name: "United States" },
       { "@type": "AdministrativeArea", name: "United Kingdom" },

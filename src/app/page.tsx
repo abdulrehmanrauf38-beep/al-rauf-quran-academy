@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import LeadMagnetForm from "@/components/LeadMagnetForm";
+import { FooterSocialIcons } from "@/components/SocialLinks";
 
 // ─── Icons (inline SVG helpers) ──────────────────────────────────────────────
 
@@ -1704,18 +1705,7 @@ export default function HomePage() {
                 {t.footer.desc}
               </p>
               {/* Social icons */}
-              <div className="flex gap-3">
-                {["f", "in", "yt", "tw"].map((s) => (
-                  <a
-                    key={s}
-                    href="#"
-                    className="w-8 h-8 rounded-full bg-stone-700 hover:bg-amber-500 hover:text-[#0f3d2e] text-stone-400 flex items-center justify-center text-xs font-bold transition-colors"
-                    aria-label={`Al Rauf International Quran Academy on ${s}`}
-                  >
-                    {s}
-                  </a>
-                ))}
-              </div>
+              <FooterSocialIcons className="mt-2" />
             </div>
 
             {/* Link columns */}
