@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const BASE_URL = "https://al-rauf-quran-academy.vercel.app";
+const BASE_URL = "https://www.alraufquranacademy.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Explore practical guides on Noorani Qaida, Tajweed rules, online Quran classes for kids & sisters, and Quranic Arabic from Al Rauf Academy scholars.",
   alternates: {
-    canonical: "https://al-rauf-quran-academy.vercel.app/blog",
+    canonical: "https://www.alraufquranacademy.com/blog",
   },
 };
 

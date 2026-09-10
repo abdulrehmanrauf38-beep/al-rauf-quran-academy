@@ -28,7 +28,7 @@ export async function generateMetadata({
     };
   }
 
-  const url = `https://al-rauf-quran-academy.vercel.app/blog/${post.slug}`;
+  const url = `https://www.alraufquranacademy.com/blog/${post.slug}`;
 
   return {
     title: post.title.length > 34 ? `${post.title.slice(0, 31)}...` : post.title,
@@ -61,7 +61,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  const currentUrl = `https://al-rauf-quran-academy.vercel.app/blog/${post.slug}`;
+  const currentUrl = `https://www.alraufquranacademy.com/blog/${post.slug}`;
   const relatedPosts = BLOG_POSTS.filter((p) => p.slug !== post.slug).slice(0, 2);
 
   return (

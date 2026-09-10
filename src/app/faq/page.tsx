@@ -528,7 +528,7 @@ export default function FAQPage() {
                 <span>💬 Chat on WhatsApp</span>
               </a>
               <a
-                href="mailto:info@al-rauf-quran-academy.vercel.app"
+                href="mailto:info@alraufquranacademy.com"
                 className="inline-flex items-center justify-center gap-2 bg-white hover:bg-stone-50 text-stone-800 border border-stone-300 font-semibold text-sm px-6 py-3.5 rounded-full transition-colors"
               >
                 <span>✉️ Email Us</span>
