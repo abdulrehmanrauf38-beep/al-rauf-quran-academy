@@ -13,14 +13,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const BASE_URL = "https://www.alraufquranacademy.com";
+const BASE_URL = "https://alraufquranacademy.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   verification: { google: "tAAEQN6QqIi6352W8TKt9_7uSni85kr_Vbv9XhWnYLs" },
   title: {
-    default: "Al Rauf Quran Academy - Online 1-on-1 Quran Classes",
-    template: "%s | Al Rauf Quran Academy",
+    default:
+      "Al Rauf International Quran Academy - Online 1-on-1 Quran Classes | Learn Quran 1-on-1",
+    template: "%s | Al Rauf International Quran Academy",
   },
   description:
     "Learn Quran online 1-on-1 with certified Pakistani teachers. Female tutors available. 3 free trial classes - USA, UK, Canada, Australia welcome.",
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: BASE_URL,
     siteName: "Al Rauf International Quran Academy",
-    title: "Al Rauf Quran Academy - Online 1-on-1 Quran Classes",
+    title: "Al Rauf International Quran Academy - Online 1-on-1 Quran Classes",
     description:
       "Learn Quran online 1-on-1 with certified Pakistani teachers. Female tutors available. 3 free trial classes - USA, UK, Canada, Australia welcome.",
     images: [
@@ -68,7 +69,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Al Rauf Quran Academy - Online 1-on-1 Quran Classes",
+    title: "Al Rauf International Quran Academy - Online 1-on-1 Quran Classes",
     description:
       "Learn Quran online 1-on-1 with certified Pakistani teachers. Female tutors available. 3 free trial classes - USA, UK, Canada, Australia welcome.",
     images: ["/icon.svg"],
