@@ -1735,6 +1735,11 @@ export default function HomePage() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/why-choose-us" className="text-sm hover:text-amber-400 transition-colors">
+                    {lang === "ur" ? "ہمیں کیوں منتخب کریں؟" : "Why Choose Us"}
+                  </Link>
+                </li>
+                <li>
                   <Link href="/resources/arabic-alphabet-chart" className="text-sm hover:text-amber-400 transition-colors">
                     {lang === "ur" ? "عربی حروف تہجی چارٹ" : "Arabic Alphabet Chart"}
                   </Link>

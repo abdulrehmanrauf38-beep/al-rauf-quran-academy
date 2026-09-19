@@ -461,6 +461,7 @@ export default function AboutPage() {
             <div className="flex flex-wrap items-center gap-6 text-sm">
               <Link href="/" className="hover:text-amber-400 transition-colors">Home</Link>
               <Link href="/about" className="text-amber-400 font-medium transition-colors">About</Link>
+              <Link href="/why-choose-us" className="hover:text-amber-400 transition-colors">Why Choose Us</Link>
               <Link href="/teachers" className="hover:text-amber-400 transition-colors">Teachers</Link>
               <Link href="/pricing" className="hover:text-amber-400 transition-colors">Pricing</Link>
               <Link href="/faq" className="hover:text-amber-400 transition-colors">FAQ</Link>
